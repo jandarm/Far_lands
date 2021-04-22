@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/нормальное удивление.wav-782a34545e8bb3853730599342856d53.sample"
+
+[deps]
+
+source_file="res://Actual Assets/Recources/Sound/нормальное удивление.wav"
+dest_files=[ "res://.import/нормальное удивление.wav-782a34545e8bb3853730599342856d53.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/Moll_bitmap.png-ed05649f6356194244e0893fc2584188.res"
+
+[deps]
+
+source_file="res://Actual Assets/Map/Moll_bitmap.png"
+dest_files=[ "res://.import/Moll_bitmap.png-ed05649f6356194244e0893fc2584188.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5

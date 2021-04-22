@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Objects/CloseGame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Actual Assets/Recources/btnMenuHover.tres" type="StyleBox" id=3]
+[ext_resource path="res://Actual Assets/Recources/btnMenuPressedr.tres" type="StyleBox" id=4]
+[ext_resource path="res://Actual Assets/Recources/btnMenuNormal.tres" type="StyleBox" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.00012207
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 64.0
+margin_top = 37.0
+margin_right = 384.0
+margin_bottom = 92.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 331.0
+margin_top = 112.0
+margin_right = 384.0
+margin_bottom = 152.0
+
+[node name="Button1" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 208.0
+margin_right = 384.0
+margin_bottom = 256.0
+rect_pivot_offset = Vector2( 149.5, 24 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 271.0
+margin_right = 384.0
+margin_bottom = 319.0
+rect_pivot_offset = Vector2( 149.5, 24 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 336.0
+margin_right = 384.0
+margin_bottom = 380.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+
+[node name="Button4" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 400.0
+margin_right = 384.0
+margin_bottom = 446.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="." instance=ExtResource( 1 )]
+margin_left = 958.837
+margin_top = 552.958
+margin_right = -19.1632
+margin_bottom = -9.04236
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 112.0
+margin_right = 313.0
+margin_bottom = 152.0
+custom_fonts/font = ExtResource( 2 )
+text = "Имя пользователя"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/победа.wav-a5eac4da0416e660736ea0382e51e230.sample"
+
+[deps]
+
+source_file="res://Actual Assets/Recources/Sound/победа.wav"
+dest_files=[ "res://.import/победа.wav-a5eac4da0416e660736ea0382e51e230.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

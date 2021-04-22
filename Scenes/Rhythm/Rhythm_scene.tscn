@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Actual Assets/Rhythm/ритм.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/sound.gd" type="Script" id=4]
+[ext_resource path="res://Actual Assets/Recources/Sound/удивление.wav" type="AudioStream" id=5]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -129.479 )
+scale = Vector2( 0.291772, 0.293943 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 1024, 600 )
+
+[node name="Progress_bar" type="ProgressBar" parent="."]
+margin_left = 163.511
+margin_top = 133.327
+margin_right = 471.511
+margin_bottom = 204.327
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 567.836
+margin_top = 54.7747
+margin_right = 971.836
+margin_bottom = 491.775
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource( 5 )
+
+[node name="Back_button" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
