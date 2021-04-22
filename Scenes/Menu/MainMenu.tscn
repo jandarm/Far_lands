@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Objects/MenuControls.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Button" parent="Control" index="1"]
+margin_right = 385.0
+
+[node name="Button1" parent="Control" index="2"]
+margin_left = 66.0
+margin_top = 209.782
+margin_right = 386.0
+margin_bottom = 257.782
+text = "КАРТА"
+
+[node name="Button2" parent="Control" index="3"]
+text = "МАРШРУТ"
+
+[node name="Button3" parent="Control" index="4"]
+text = "СТАТИСТИКА"
+
+[node name="Button4" parent="Control" index="5"]
+text = "НАСТРОЙКИ"
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
+[connection signal="pressed" from="Control/Button1" to="Control" method="_on_Button1_pressed"]
+[connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
+
+[editable path="Control"]
+
+[editable path="Control/Control"]

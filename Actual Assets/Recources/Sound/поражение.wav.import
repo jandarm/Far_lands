@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/поражение.wav-27bca7373e8481a2bab016a766304157.sample"
+
+[deps]
+
+source_file="res://Actual Assets/Recources/Sound/поражение.wav"
+dest_files=[ "res://.import/поражение.wav-27bca7373e8481a2bab016a766304157.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

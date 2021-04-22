@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/падараг.wav-58b6753abede7a67f8cbcf5867962f27.sample"
+
+[deps]
+
+source_file="res://Actual Assets/Recources/Sound/падараг.wav"
+dest_files=[ "res://.import/падараг.wav-58b6753abede7a67f8cbcf5867962f27.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Actual Assets/OXBPMCEAPAM - копия.jpg" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Characters/Пухляш/Пухляш-all_2.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Buttons/Go_map.gd" type="Script" id=3]
+
+[node name="Meme_scene" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 1.19527 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Event_controll" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Go_back" type="Button" parent="Event_controll"]
+margin_left = 572.174
+margin_top = 293.523
+margin_right = 635.174
+margin_bottom = 352.523
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Event_controll/Go_back"]
+position = Vector2( 32.7431, 28.6706 )
+scale = Vector2( 1.51585, 1.51585 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Event_controll/Go_back"]
+[connection signal="pressed" from="Event_controll/Go_back" to="Event_controll/Go_back" method="_on_Go_back_pressed"]
