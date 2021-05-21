@@ -4,7 +4,7 @@
 [ext_resource path="res://Actual Assets/Map/Puffer_bitmap.png" type="BitMap" id=2]
 [ext_resource path="res://Actual Assets/Map/Moll_bitmap.png" type="BitMap" id=3]
 [ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Manager/Manager.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Manager/Shader_Manager.gd" type="Script" id=5]
 [ext_resource path="res://Actual Assets/Map/Moll.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Map/Puffer.png" type="Texture" id=7]
 [ext_resource path="res://Actual Assets/Map/Land.png" type="Texture" id=8]
@@ -70,14 +70,14 @@ shader_param/is_visible = false
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 1 )
 shader_param/width = 16.0
-shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/outline_color = Color( 0.745098, 0.188235, 0.188235, 1 )
 shader_param/is_visible = false
 
 [node name="Map_scene" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Ground" type="Sprite" parent="."]
-position = Vector2( 511.56, 364.413 )
+position = Vector2( 510.56, 364.413 )
 rotation = -1.57004
 scale = Vector2( 0.43814, 1025.9 )
 texture = SubResource( 2 )
@@ -177,11 +177,11 @@ texture = ExtResource( 9 )
 vframes = 2
 hframes = 2
 [connection signal="pressed" from="Event_controll/Back_button/Go_back" to="Event_controll" method="_on_Go_back_pressed"]
-[connection signal="mouse_entered" from="Event_controll/Moll" to="." method="_on_Moll_mouse_entered"]
-[connection signal="mouse_exited" from="Event_controll/Moll" to="." method="_on_Moll_mouse_exited"]
+[connection signal="mouse_entered" from="Event_controll/Moll" to="." method="_shader_entered" binds= [ "Moll" ]]
+[connection signal="mouse_exited" from="Event_controll/Moll" to="." method="_shader_exited" binds= [ "Moll" ]]
 [connection signal="pressed" from="Event_controll/Moll" to="Event_controll" method="_on_Moll_pressed"]
-[connection signal="mouse_entered" from="Event_controll/Cave" to="." method="_on_Cave_mouse_entered"]
-[connection signal="mouse_exited" from="Event_controll/Cave" to="." method="_on_Cave_mouse_exited"]
+[connection signal="mouse_entered" from="Event_controll/Cave" to="." method="_shader_entered" binds= [ "Cave" ]]
+[connection signal="mouse_exited" from="Event_controll/Cave" to="." method="_shader_exited" binds= [ "Cave" ]]
 [connection signal="pressed" from="Event_controll/Cave" to="Event_controll" method="_on_Cave_pressed"]
 [connection signal="pressed" from="Event_controll/Go_Scene_1" to="Event_controll/Go_Scene_1" method="_on_Go_Scene_1_pressed"]
 

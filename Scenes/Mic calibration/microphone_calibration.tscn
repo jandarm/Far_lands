@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Mic calibration/microphone_calibration.gd" type="Script" id=1]
+[ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 39
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 4.05948
+margin_right = 2.0
+margin_bottom = 4.05945
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_time_left" type="Label" parent="."]
+margin_left = 862.248
+margin_top = 510.909
+margin_right = 1005.25
+margin_bottom = 566.909
+custom_fonts/font = SubResource( 1 )
+text = "-
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_time_left_name" type="Label" parent="."]
+margin_left = 720.345
+margin_top = 515.064
+margin_right = 863.345
+margin_bottom = 571.064
+custom_fonts/font = SubResource( 2 )
+text = "Time left
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer_time_left" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="label_do_something" type="Label" parent="."]
+visible = false
+margin_left = 267.643
+margin_top = 190.497
+margin_right = 785.643
+margin_bottom = 328.497
+custom_fonts/font = SubResource( 3 )
+text = "Молчите"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

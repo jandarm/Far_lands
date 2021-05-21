@@ -1,0 +1,9 @@
+[
+	{"Name" : "Пухляш", "Action" : "question", "Text" : "Пошумим?!"},
+	{"Name" : "Крот", "Emotion" : "excited" , "Text" : "Пошумим!"},
+]
+
+{
+	"key_01" : {"Name" : "Крот", "Emotion" : "excited" , "Text" : "Пошумим!"},
+	"key_02" : {"Name" : "Кот", "Emotion" : "annoyed" , "Text" : "Хорош шуметь!"},
+}

@@ -1,0 +1,15 @@
+{
+	"isCallibrated" : false,
+	"routes" : [
+		{
+			"name" : "this one",
+			"01" : "../Scenes/Example/Пример.json",
+			"02" : "../Scenes/Example/Диалога.json",
+			"03" : "../Scenes/Example/Ну_вы_поняли.json",
+		},
+		{
+			"name" : "the best one",
+			"que" : ["../Scenes/Example/Пример.json", "../Scenes/Example/Получше.json", "../Scenes/Example/Ага.json",],
+		}
+	]
+}

@@ -1,29 +1,20 @@
 extends Node2D
 
+var RmsBlow
+var RmsRhythm
+
 func _ready():
+	RmsBlow = 0
+	RmsRhythm = 0
 	pass
 
 
-func _on_Cave_mouse_entered():
-	var node = get_node("Event_controll/Cave");
-	node.material.set('shader_param/is_visible', true);
+func say_How_you_feel():
+	print("it works")
+	print(RmsBlow)
+	print(RmsRhythm)	
 	pass
 
 
-func _on_Cave_mouse_exited():
-	var node = get_node("Event_controll/Cave");
-	node.material.set('shader_param/is_visible', false);
-	pass
-
-
-
-func _on_Moll_mouse_entered():
-	var node = get_node("Event_controll/Moll");
-	node.material.set('shader_param/is_visible', true);
-	pass
-
-
-func _on_Moll_mouse_exited():
-	var node = get_node("Event_controll/Moll");
-	node.material.set('shader_param/is_visible', false);
-	pass
+func is_Callibrated():	
+	return JsonReader.levelData["isCallibrated"]
