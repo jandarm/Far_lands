@@ -18,5 +18,5 @@ func say_How_you_feel():
 
 func is_Callibrated():	
 	return JsonReader.levelData["isCallibrated"]
-
-#another test
+	
+# просто комментарий
