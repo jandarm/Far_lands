@@ -63,6 +63,7 @@ custom_fonts/font = SubResource( 2 )
 jsonPath = "res://Scripts/Manager/Info.json"
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
+[connection signal="pressed" from="Control/btnSettings" to="Control" method="_callibrate_Me"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
 
 [editable path="Control"]
