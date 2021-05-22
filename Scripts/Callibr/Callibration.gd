@@ -16,6 +16,7 @@ var stamps = []
 var stampsMax = []
 var canRecord = false
 var clapRecord = false
+var canClap = false
 
 func _ready():
 	bar = get_node("Pog")
@@ -31,7 +32,7 @@ func _process(delta):
 	draw_Progress()
 
 	if (canRecord && !clapRecord):
-		stamps.append(power)		
+		stamps.append(power)
 		#можно удалить - выводит значения массива
 		get_node("Mass").text += "\n"\
 		+ power as String
@@ -40,11 +41,22 @@ func _process(delta):
 		calculate_Power()
 		get_node("Mass").text = "Davay " + power as String
 		get_node("Mass").text += "\n" + Manager.RmsBlow as String
-		if (power > Manager.RmsBlow):
-			stamps.append(power)
-			get_node("Mass").text = "Clap! Clap!"
-			get_node("Mass").text += power as String
-			get_node("Mass").text += "\n" + stamps as String
+		if (canClap):
+			if (power > Manager.RmsBlow):
+				stamps.append(power)
+				get_node("Mass").text = "Clap! Clap!"
+				get_node("Mass").text += power as String
+				get_node("Mass").text += "\n" + stamps as String
+			if (stampsMax.size() >= 4):
+				tmCount +=1
+				_on_Timer_timeout()
+			elif (stampsMax.size() < 4 && !stamps.empty()):
+				stampsMax.append(get_Max_no_dupes(stamps))
+				stamps.clear()
+				canClap = false
+				bar.value -= 1
+		if (power < Manager.RmsBlow):
+			canClap = true
 	pass
 	
 	
@@ -90,17 +102,26 @@ func _on_Timer_timeout():
 			stamps.clear()
 			canRecord = false
 			clapRecord = true
-			tmCount +=1
-			tm.start()
+			bar.max_value = 4
+			bar.value = 4
+			bar.step = 1
+			tm.stop()
 		6:
-			canRecord = false
+			canClap = false
 			clapRecord = false
-			while (stampsMax.size()<3):
-				stampsMax.append(get_Max_no_dupes(stamps))
+			canRecord = false
 			rmsClap = calculate_RMS(stampsMax)
 			Manager.RmsRhythm = rmsClap * (-1)
-			get_node("Mass").text += "\n" + Manager.RmsRhythm as String\
+			get_node("Mass").text = "Part_6\n" + Manager.RmsRhythm as String\
 			 + "\n" +  stampsMax as String
+			bar.max_value = 2
+			bar.step = 0.05
+			tm.wait_time = 2
+			tmCount +=1
+			tm.start()
+		7:
+# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://Scenes/Menu/MainMenu.tscn")
 		_:
 			canRecord = false
 			clapRecord = false
@@ -133,10 +154,13 @@ func calculate_Power():
 
 
 func draw_Progress():
-	if (bar.value !=100):
-		bar.value = tm.time_left
+	if (tmCount == 5):
+		pass
 	else:
-		bar.value = 0
+		if (bar.value !=100):
+			bar.value = tm.time_left
+		else:
+			bar.value = 0
 	pass
 
 
