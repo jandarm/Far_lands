@@ -30,6 +30,7 @@ func end_of_anim():
 		exercise_completed()
 		#задержка 2 секунды перед закрытием уровня после 3 выполнений задания
 		yield(get_tree().create_timer(2.0), "timeout")
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Scenes/Map/Map_scene.tscn")
 	else:
 		pass

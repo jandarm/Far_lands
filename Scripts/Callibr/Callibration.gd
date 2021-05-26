@@ -39,12 +39,12 @@ func _process(delta):
 	
 	if (clapRecord):       
 		calculate_Power()
-		get_node("Mass").text = "Davay " + power as String
+		get_node("Mass").text = "Давай! " + power as String
 		get_node("Mass").text += "\n" + Manager.RmsBlow as String
 		if (canClap):
 			if (power > Manager.RmsBlow):
 				stamps.append(power)
-				get_node("Mass").text = "Clap! Clap!"
+				get_node("Mass").text = "Хлоп! Хлоп!"
 				get_node("Mass").text += power as String
 				get_node("Mass").text += "\n" + stamps as String
 			if (stampsMax.size() >= 4):
@@ -64,7 +64,7 @@ func _on_Timer_timeout():
 	match tmCount:
 		0:
 			canRecord = true
-			lb.text = "Tiho tam!"
+			lb.text = "Тише мыши - кот на крыше!"
 			bar.max_value = 2
 			tm.wait_time = 2
 			tmCount += 1
@@ -73,32 +73,32 @@ func _on_Timer_timeout():
 			canRecord = false
 			rmsSilent = calculate_RMS(stamps)
 			get_node("Mass").text = rmsSilent as String
-			lb.text = "Zakonchili"
+			lb.text = "Приготовься дуть в микрофон"
 			tmCount += 1
 			tm.start()
 			stamps.clear()
 		2:
 			canRecord = true
-			lb.text = "A teper' duy!"
+			lb.text = "Дуй!"
 			tmCount += 1
 			tm.start()
 		3:
 			canRecord = false
 			rmsBlow = calculate_RMS(stamps)
 			get_node("Mass").text = rmsBlow as String
-			lb.text = "Zakonchili"
+			lb.text = "Закончили"
 			tmCount += 1
 			tm.start()
 			stamps.clear()
 			get_node("Mass").text = rmsBlow as String
 		4:
-			lb.text = "Rezultat"
+			lb.text = "Результат"
 			Manager.RmsBlow = ((rmsBlow + rmsSilent)/2)*(-1)
 			get_node("Mass").text = Manager.RmsBlow as String
 			tmCount += 1
 			tm.start()
 		5:
-			lb.text = "Hlop-xlop 4 raza, plz"
+			lb.text = "Похлопай 4 раза!"
 			stamps.clear()
 			canRecord = false
 			clapRecord = true
@@ -125,7 +125,7 @@ func _on_Timer_timeout():
 		_:
 			canRecord = false
 			clapRecord = false
-			lb.text = "ne rabotayet"
+			lb.text = "Конец сцены"
 			get_node("Mass").text = stampsMax as String
 			tm.stop()
 	pass
