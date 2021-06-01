@@ -1,7 +1,7 @@
 extends Node
 
-var timeStampsMedia = []
-var timeStampsMic = []
+var stampsMedia = []
+var stampsMic = []
 
 var canRecordMic = false
 var canClap = true
@@ -9,22 +9,34 @@ var canRecordMedia = true
 var canCheck = true
 
 var example
-var guy
+var mole
+var watch
 var tm
 
-var tmCount
+var watchCount
+var clapCount
 
 var narrator
 var meterTime
 var power
 
+var animationState = "Idle"
+
+
+var waitingDebug
+
 func _ready():
-	tm = get_node("Stopwatch")
+	watch = get_node("Stopwatch")
+	tm = get_node("ClapTime")
 	narrator = get_node("Control/lbNarrator")
 	meterTime = get_node("Control/BarTime")
-	guy = get_node("Guy")
+	mole = get_node("Mole")
 	example = get_node("Example")
-	tmCount = 0
+	
+	waitingDebug = get_node("WaitingDebug")
+	
+	watchCount = 0
+	clapCount = 0
 	pass 
 	
 # warning-ignore:unused_argument
@@ -32,33 +44,95 @@ func _process(delta):
 	_paint_Time_left()
 	_paint_Bar_mic()
 	_paint_Bar_media()
+	mole.play_animation(animationState)
 	
 	record_Mic_check()
+	
+	clap_Time_debug()
 	
 	pass
 
 func _on_Stopwatch_timeout():
-	match tmCount:
+	match watchCount:
 		0:
 			example.play()
 			narrator.text = "Слушай внимательно..."
-			tm.wait_time = example.stream.get_length()
+			watch.wait_time = example.stream.get_length()
 			meterTime.max_value = example.stream.get_length()
-			tmCount +=1
-			tm.start()
+			watchCount +=1
+			watch.start()
 		1:
 			narrator.text = "А теперь повтори!"
-			tm.wait_time = 5
+			canRecordMedia = false
+			watch.wait_time = 5
 			meterTime.max_value = 5
-			tm.stop()
+			animationState = "Idle"
+			watch.stop()
 		_: 
+			tm.stop()
 			narrator.text = "Всё! Может ещё разок?"
-			guy.guy_Happy()
+			animationState = "Success"
 	pass
 
+
+func _on_Example_finished():
+	canRecordMic = true
+	canRecordMedia = false
+	pass
+
+
+func clap_Time_debug():
+	if (waitingDebug.value !=100):
+		waitingDebug.value = tm.time_left
+	else:
+		waitingDebug.value = 0
+	pass
+
+func _on_ClapTime_timeout():
+	clapCount = 0
+	watchCount = 0
+	canRecordMedia = true
+	canRecordMic = false
+	stampsMedia.clear()
+	stampsMic.clear()
+	narrator.text = "Мы так никогда не закончим..."
+	animationState = "Sad"
+	_on_Stopwatch_timeout()
+	pass
+
+func record_Mic_check():
+	if (canRecordMic):       
+		calculate_Power()
+		if (power < Manager.RmsRhythm):
+			canClap = true
+		if (canClap):
+			if (power > Manager.RmsRhythm && stampsMic.size() >= 2):
+				watchCount +=1
+				_on_Stopwatch_timeout()
+			if (power > Manager.RmsRhythm && stampsMic.size() < 2):
+				tm.start()
+				stampsMic.append(tm.time_left)
+				canClap = false
+	pass
+
+func record_Media_check():
+	if (canRecordMedia):       
+		calculate_Example()
+		if (canCheck):
+			stampsMedia.append(tm.time_left)
+			canCheck = false
+		if (power < Manager.RmsRhythm):
+			canCheck = true
+	pass
+
+func timing():
+	var hit
+	
+	pass 
+	
 func _paint_Time_left():
 	if (meterTime.value !=100):
-		meterTime.value = tm.time_left
+		meterTime.value = watch.time_left
 	else:
 		meterTime.value = 0
 	pass
@@ -67,7 +141,6 @@ func _paint_Time_left():
 func _paint_Bar_mic():
 	calculate_Power()
 	get_node("Control/BarMic/lbMicDb").text = power as String
-	
 	get_node("Control/BarMic").value = power
 	pass
 
@@ -75,7 +148,6 @@ func _paint_Bar_mic():
 func _paint_Bar_media():
 	calculate_Example()
 	get_node("Control/BarMedia/lbMedDb").text = power as String
-	
 	get_node("Control/BarMedia").value = power
 	pass
 
@@ -90,38 +162,3 @@ func calculate_Power():
 	get_bus_peak_volume_right_db(AudioServer.\
 	get_bus_index("Rhythm"), 0), 0.01)
 	return power
-
-
-func _on_Example_finished():
-	canRecordMic = true
-	canRecordMedia = false
-	pass
-
-func record_Mic_check():
-	if (canRecordMic):       
-		calculate_Power()
-		if (canClap):
-			if (power > Manager.RmsRhythm && timeStampsMic.size() >= 3):
-				tmCount +=1
-				_on_Stopwatch_timeout()
-			if (power > Manager.RmsRhythm && timeStampsMic.size() < 3):
-				timeStampsMic.append(tm.time_left)
-				canClap = false
-		if (power < Manager.RmsRhythm):
-			canClap = true
-	pass
-
-func record_Media_check():
-	if (canRecordMedia):       
-		calculate_Example()
-		if (canCheck):
-			timeStampsMedia.append(tm.time_left)
-			canCheck = false
-		if (power < Manager.RmsRhythm):
-			canCheck = true
-	pass
-
-func timing():
-	var hit
-	
-	pass 

@@ -4,21 +4,17 @@ var RmsBlow
 var RmsRhythm
 
 func _ready():
-	RmsBlow = 0
-	RmsRhythm = -30
+	RmsBlow = -20
+	RmsRhythm = -20
 	pass
 
 
 func say_How_you_feel():
 	print("it works")
 	print(RmsBlow)
-	print(RmsRhythm)	
+	print(RmsRhythm)
 	pass
 
 
-func is_Callibrated():	
+func is_Callibrated():
 	return JsonReader.levelData["isCallibrated"]
-
-# просто комментарий
-
-#не очень просто тест
