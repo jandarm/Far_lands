@@ -1,13 +1,12 @@
 extends Node
 
+var stateMachine
+
 func _ready():
+	stateMachine = get_node("AnimationTree").get("parameters/playback")
 	pass
 
 func play_animation (name):
-	$AnimationPlayer.play(name)
-	pass
-
-# warning-ignore:unused_argument
-func _on_AnimationPlayer_animation_finished(anim_name):
-	$Animation.stop()
+	#$AnimationPlayer.play(name)
+	stateMachine.travel(name)
 	pass

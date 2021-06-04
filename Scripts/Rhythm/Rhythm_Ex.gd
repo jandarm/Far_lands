@@ -6,7 +6,7 @@ var stampsMic = []
 var canRecordMic = false
 var canClap = true
 var canRecordMedia = true
-var canCheck = true
+var canCheck = false
 
 var example
 var mole
@@ -14,14 +14,12 @@ var watch
 var tm
 
 var watchCount
-var clapCount
 
 var narrator
 var meterTime
 var power
 
-var animationState = "Idle"
-
+#var animationState = "Idle"
 
 var waitingDebug
 
@@ -36,7 +34,8 @@ func _ready():
 	waitingDebug = get_node("WaitingDebug")
 	
 	watchCount = 0
-	clapCount = 0
+	stampsMedia.clear()
+	stampsMic.clear()
 	pass 
 	
 # warning-ignore:unused_argument
@@ -44,9 +43,10 @@ func _process(delta):
 	_paint_Time_left()
 	_paint_Bar_mic()
 	_paint_Bar_media()
-	mole.play_animation(animationState)
+	#mole.play_animation(animationState)
 	
 	record_Mic_check()
+	record_Media_check()
 	
 	clap_Time_debug()
 	
@@ -56,6 +56,8 @@ func _on_Stopwatch_timeout():
 	match watchCount:
 		0:
 			example.play()
+			canCheck = true
+			tm.wait_time = example.stream.get_length()
 			narrator.text = "Слушай внимательно..."
 			watch.wait_time = example.stream.get_length()
 			meterTime.max_value = example.stream.get_length()
@@ -66,12 +68,14 @@ func _on_Stopwatch_timeout():
 			canRecordMedia = false
 			watch.wait_time = 5
 			meterTime.max_value = 5
-			animationState = "Idle"
+			mole.play_animation("Idle")
+			tm.stop()
 			watch.stop()
 		_: 
 			tm.stop()
 			narrator.text = "Всё! Может ещё разок?"
-			animationState = "Success"
+			canRecordMedia = true
+			mole.play_animation("Success")
 	pass
 
 
@@ -88,17 +92,18 @@ func clap_Time_debug():
 		waitingDebug.value = 0
 	pass
 
+
 func _on_ClapTime_timeout():
-	clapCount = 0
 	watchCount = 0
 	canRecordMedia = true
 	canRecordMic = false
 	stampsMedia.clear()
 	stampsMic.clear()
 	narrator.text = "Мы так никогда не закончим..."
-	animationState = "Sad"
+	mole.play_animation("Sad")
 	_on_Stopwatch_timeout()
 	pass
+
 
 func record_Mic_check():
 	if (canRecordMic):       
@@ -106,30 +111,34 @@ func record_Mic_check():
 		if (power < Manager.RmsRhythm):
 			canClap = true
 		if (canClap):
-			if (power > Manager.RmsRhythm && stampsMic.size() >= 2):
+			if (power > Manager.RmsRhythm && stampsMic.size() >= stampsMedia.size()):
 				watchCount +=1
 				_on_Stopwatch_timeout()
-			if (power > Manager.RmsRhythm && stampsMic.size() < 2):
-				tm.start()
+			if (power > Manager.RmsRhythm && stampsMic.size() < stampsMedia.size()):
 				stampsMic.append(tm.time_left)
+				tm.start()
 				canClap = false
 	pass
+
 
 func record_Media_check():
 	if (canRecordMedia):       
 		calculate_Example()
-		if (canCheck):
+		if (canCheck && power > Manager.RmsRhythm):
 			stampsMedia.append(tm.time_left)
+			get_node("DeleteMe").text = stampsMedia as String
+			tm.start()
 			canCheck = false
 		if (power < Manager.RmsRhythm):
 			canCheck = true
 	pass
 
+
 func timing():
-	var hit
 	
 	pass 
-	
+
+
 func _paint_Time_left():
 	if (meterTime.value !=100):
 		meterTime.value = watch.time_left

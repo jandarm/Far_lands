@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Actual Assets/Recources/Shaders/outline.shader" type="Shader" id=1]
 [ext_resource path="res://Actual Assets/Map/Puffer_bitmap.png" type="BitMap" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Actual Assets/Characters/Пухляш/Пухляш-all_2.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Buttons/Go_Scene_1.vs" type="Script" id=10]
 [ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Dialog/Dialog_scene.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.472081, 1 )
@@ -176,6 +178,11 @@ scale = Vector2( 1.51585, 1.51585 )
 texture = ExtResource( 9 )
 vframes = 2
 hframes = 2
+
+[node name="Validator" parent="." instance=ExtResource( 12 )]
+
+[node name="Dialog" parent="." instance=ExtResource( 13 )]
+dialogPath = "res://Scripts/Dialogs/Test.json"
 [connection signal="pressed" from="Event_controll/Back_button/Go_back" to="Event_controll" method="_on_Go_back_pressed"]
 [connection signal="mouse_entered" from="Event_controll/Moll" to="." method="_shader_entered" binds= [ "Moll" ]]
 [connection signal="mouse_exited" from="Event_controll/Moll" to="." method="_shader_exited" binds= [ "Moll" ]]

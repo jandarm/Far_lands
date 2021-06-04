@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Callibr/Callibration.gd" type="Script" id=1]
 [ext_resource path="res://Actual Assets/Recources/GUI/ProgressBar.png" type="Texture" id=2]
-[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
 
-[sub_resource type="AudioStreamMicrophone" id=1]
+[sub_resource type="DynamicFontData" id=1]
+resource_local_to_scene = true
+font_path = "res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="AudioStreamMicrophone" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -42,7 +51,7 @@ margin_left = 46.9782
 margin_top = 181.45
 margin_right = 414.978
 margin_bottom = 377.45
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Сейчас мы проверим твой микрофон
 
 Это займёт совсем немного времени!"
@@ -54,7 +63,7 @@ __meta__ = {
 }
 
 [node name="Listener" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 1 )
+stream = SubResource( 3 )
 autoplay = true
 bus = "Calibr"
 

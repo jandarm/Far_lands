@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/Planks.png" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scripts/Dialogs/Dialog.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 145, 65, 46, 14 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 145, 81, 46, 14 )
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Dialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dim" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.0784314, 0.101961, 0.192157, 0.160784 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog_box" type="TextureRect" parent="."]
+margin_left = 46.0
+margin_top = 380.0
+margin_right = 986.0
+margin_bottom = 580.0
+texture = SubResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Dialog_box"]
+margin_left = -33.237
+margin_top = -36.0575
+margin_right = 227.763
+margin_bottom = 43.9425
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Dialog_box/TextureRect"]
+margin_left = 18.0
+margin_top = 13.0
+margin_right = 245.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 3 )
+text = "Имя"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="RichTextLabel" parent="Dialog_box"]
+margin_left = 78.0
+margin_top = 56.0
+margin_right = 858.0
+margin_bottom = 147.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "
+ Привет, это тестовое сообщение"
+text = "
+ Привет, это тестовое сообщение"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Portrait" type="Sprite" parent="."]

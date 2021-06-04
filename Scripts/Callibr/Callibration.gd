@@ -7,6 +7,8 @@ var lb
 #громкость
 var power
 
+var recordMode
+
 var rmsSilent
 var rmsBlow
 var rmsClap
@@ -23,6 +25,7 @@ func _ready():
 	tm = get_node("Timer")
 	lb = get_node("Say")
 	tmCount = 0
+	recordMode = "Silence"
 	pass
 	
 	
@@ -64,6 +67,7 @@ func _on_Timer_timeout():
 	match tmCount:
 		0:
 			canRecord = true
+			recordMode = "Silence"
 			lb.text = "Тише мыши - кот на крыше!"
 			bar.max_value = 2
 			tm.wait_time = 2
@@ -79,6 +83,8 @@ func _on_Timer_timeout():
 			stamps.clear()
 		2:
 			canRecord = true
+			recordMode = "Blow"
+			get_node("Listener").bus = "Blow_bus"
 			lb.text = "Дуй!"
 			tmCount += 1
 			tm.start()
@@ -99,6 +105,8 @@ func _on_Timer_timeout():
 			tm.start()
 		5:
 			lb.text = "Похлопай 4 раза!"
+			recordMode = "Clap"
+			get_node("Listener").bus = "Rhythm"
 			stamps.clear()
 			canRecord = false
 			clapRecord = true
@@ -110,6 +118,8 @@ func _on_Timer_timeout():
 			canClap = false
 			clapRecord = false
 			canRecord = false
+			recordMode = "Silence"
+			get_node("Listener").bus = "Calibr"
 			rmsClap = calculate_RMS(stampsMax)
 			Manager.RmsRhythm = rmsClap * (-1)
 			get_node("Mass").text = "Part_6\n" + Manager.RmsRhythm as String\
@@ -125,6 +135,8 @@ func _on_Timer_timeout():
 		_:
 			canRecord = false
 			clapRecord = false
+			recordMode = "Silence"
+			get_node("Listener").bus = "Calibr"
 			lb.text = "Конец сцены"
 			get_node("Mass").text = stampsMax as String
 			tm.stop()
@@ -147,9 +159,18 @@ func calculate_RMS(mass):
 	return rms
 
 func calculate_Power():
-	power = stepify(AudioServer.\
-	get_bus_peak_volume_right_db(AudioServer.\
-	get_bus_index("Calibr"), 0), 0.01)
+	if (recordMode == "Silence"):
+		power = stepify(AudioServer.\
+		get_bus_peak_volume_right_db(AudioServer.\
+		get_bus_index("Calibr"), 0), 0.01)
+	if (recordMode == "Blow"):
+		power = stepify(AudioServer.\
+		get_bus_peak_volume_right_db(AudioServer.\
+		get_bus_index("Blow_bus"), 0), 0.01)
+	if (recordMode == "Clap"):
+		power = stepify(AudioServer.\
+		get_bus_peak_volume_right_db(AudioServer.\
+		get_bus_index("Rhythm"), 0), 0.01)
 	return power
 
 
