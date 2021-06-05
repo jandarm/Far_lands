@@ -27,6 +27,7 @@ script = ExtResource( 1 )
 wait_time = 5.0
 
 [node name="StartButton" type="Button" parent="."]
+visible = false
 margin_left = 33.0
 margin_top = 94.0
 margin_right = 208.0
@@ -101,29 +102,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lNoize" type="Label" parent="."]
-margin_left = 33.5135
-margin_top = 200.541
-margin_right = 127.513
-margin_bottom = 225.541
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="lNoizeStatus" type="Label" parent="."]
-margin_left = 32.717
-margin_top = 171.957
-margin_right = 130.717
-margin_bottom = 196.957
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Is this noise?"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="lLevelPassed" type="Label" parent="."]
 margin_left = 132.595
 margin_top = 200.486
@@ -152,6 +130,7 @@ __meta__ = {
 }
 
 [node name="Waiting_time" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 one_shot = true
+[connection signal="timeout" from="TimeOfInteraction" to="." method="_on_TimeOfInteraction_timeout"]
 [connection signal="pressed" from="StartButton" to="." method="_on_Button_pressed"]

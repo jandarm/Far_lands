@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Actual Assets/Recources/GUI/домой.png" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Recources/GUI/Home.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Buttons/Go_map.gd" type="Script" id=2]
-
-
 
 [node name="Back_button" type="Control"]
 anchor_right = 1.0
@@ -15,7 +13,7 @@ __meta__ = {
 
 [node name="Go_back" type="Button" parent="."]
 margin_top = 489.0
-margin_right = 113.0
+margin_right = 112.0
 margin_bottom = 601.0
 focus_mode = 0
 mouse_default_cursor_shape = 2

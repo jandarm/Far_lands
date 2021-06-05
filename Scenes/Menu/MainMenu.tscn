@@ -45,9 +45,6 @@ texture = ExtResource( 7 )
 [node name="Control" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Button" parent="Control" index="1"]
-margin_right = 385.0
-
 [node name="btnMap" parent="Control" index="2"]
 custom_fonts/font = SubResource( 1 )
 text = "КАРТА"
@@ -56,13 +53,13 @@ text = "КАРТА"
 custom_fonts/font = SubResource( 1 )
 text = "МАРШРУТ"
 
-[node name="Label" parent="Control" index="6"]
+[node name="lUserName" parent="Control" index="6"]
 custom_fonts/font = SubResource( 2 )
 
 [node name="Validator" parent="." instance=ExtResource( 5 )]
 jsonPath = "res://Scripts/Manager/Info.json"
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
+[connection signal="pressed" from="Control/btnSettings" to="Control" method="_on_btnSettings_pressed"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
 
 [editable path="Control"]

@@ -111,6 +111,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stopAnim"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "talking"
@@ -143,7 +157,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "wait"
 length = 1.4
 step = 0.2
 tracks/0/type = "value"
@@ -168,7 +181,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 1.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ null ],
+"args": [  ],
 "method": "end_of_anim"
 } ]
 }
@@ -177,12 +190,11 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="character" type="Sprite" parent="."]
-position = Vector2( 290, 99.444 )
-rotation = -0.122173
+position = Vector2( 650, 100 )
+rotation = 6.28319
 scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 hframes = 8
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "entry"
