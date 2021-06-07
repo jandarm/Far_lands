@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Objects/CloseGame.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Actual Assets/Recources/btnMenuHover.tres" type="StyleBox" id=3]
 [ext_resource path="res://Actual Assets/Recources/btnMenuPressedr.tres" type="StyleBox" id=4]
 [ext_resource path="res://Actual Assets/Recources/btnMenuNormal.tres" type="StyleBox" id=5]
+[ext_resource path="res://Actual Assets/Recources/GUI/Button_bubilda.png" type="Texture" id=6]
+[ext_resource path="res://Actual Assets/Recources/GUI/Pansil.png" type="Texture" id=7]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -24,13 +26,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 331.0
-margin_top = 112.0
-margin_right = 384.0
-margin_bottom = 152.0
+[node name="btnUsers" type="Button" parent="."]
+margin_left = 330.37
+margin_top = 106.96
+margin_right = 390.37
+margin_bottom = 153.96
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
 
-[node name="Button1" type="Button" parent="."]
+[node name="btnMap" type="Button" parent="."]
 margin_left = 64.0
 margin_top = 208.0
 margin_right = 384.0
@@ -47,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="."]
+[node name="btnPath" type="Button" parent="."]
 margin_left = 64.0
 margin_top = 271.0
 margin_right = 384.0
@@ -64,31 +69,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button3" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 336.0
-margin_right = 384.0
-margin_bottom = 380.0
+[node name="btnSettings" type="TextureButton" parent="."]
+margin_left = 57.0
+margin_top = 333.0
+margin_right = 391.0
+margin_bottom = 395.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = ExtResource( 2 )
 enabled_focus_mode = 0
-
-[node name="Button4" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 400.0
-margin_right = 384.0
-margin_bottom = 446.0
-focus_mode = 0
-mouse_default_cursor_shape = 2
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = ExtResource( 2 )
-enabled_focus_mode = 0
+texture_normal = ExtResource( 6 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -99,7 +89,7 @@ margin_top = 552.958
 margin_right = -19.1632
 margin_bottom = -9.04236
 
-[node name="Label" type="Label" parent="."]
+[node name="lUserName" type="Label" parent="."]
 margin_left = 64.0
 margin_top = 112.0
 margin_right = 313.0

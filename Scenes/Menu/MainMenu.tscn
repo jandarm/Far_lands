@@ -1,33 +1,65 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Objects/MenuControls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=2]
+[ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Actual Assets/Recources/GUI/Main_back.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actual Assets/Recources/GUI/Frame.png" type="Texture" id=6]
+[ext_resource path="res://Actual Assets/Recources/GUI/Source/Tottally_not_a_reference.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 30
+font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="Graphics"]
+position = Vector2( 512, 300 )
+scale = Vector2( 1.6, 1.25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Frame" type="Sprite" parent="Graphics"]
+position = Vector2( 725.688, 302.869 )
+scale = Vector2( 0.779911, 0.741844 )
+z_index = 1
+texture = ExtResource( 6 )
+
+[node name="Tottally_not_a_reference" type="Sprite" parent="Graphics/Frame"]
+position = Vector2( -0.263397, -0.941181 )
+scale = Vector2( 0.814165, 0.951018 )
+z_as_relative = false
+texture = ExtResource( 7 )
 
 [node name="Control" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Button" parent="Control" index="1"]
-margin_right = 385.0
-
-[node name="Button1" parent="Control" index="2"]
-margin_left = 66.0
-margin_top = 209.782
-margin_right = 386.0
-margin_bottom = 257.782
+[node name="btnMap" parent="Control" index="2"]
+custom_fonts/font = SubResource( 1 )
 text = "КАРТА"
 
-[node name="Button2" parent="Control" index="3"]
+[node name="btnPath" parent="Control" index="3"]
+custom_fonts/font = SubResource( 1 )
 text = "МАРШРУТ"
 
-[node name="Button3" parent="Control" index="4"]
-text = "СТАТИСТИКА"
+[node name="lUserName" parent="Control" index="6"]
+custom_fonts/font = SubResource( 2 )
 
-[node name="Button4" parent="Control" index="5"]
-text = "НАСТРОЙКИ"
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
-[connection signal="pressed" from="Control/Button1" to="Control" method="_on_Button1_pressed"]
+[node name="Validator" parent="." instance=ExtResource( 5 )]
+jsonPath = "res://Scripts/Manager/Info.json"
+[connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
+[connection signal="pressed" from="Control/btnSettings" to="Control" method="_on_btnSettings_pressed"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
 
 [editable path="Control"]

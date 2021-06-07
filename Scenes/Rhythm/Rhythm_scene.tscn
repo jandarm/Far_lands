@@ -1,43 +1,179 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actual Assets/Rhythm/ритм.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/sound.gd" type="Script" id=4]
-[ext_resource path="res://Actual Assets/Recources/Sound/удивление.wav" type="AudioStream" id=5]
+[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scripts/Rhythm/Rhythm_Ex.gd" type="Script" id=4]
+[ext_resource path="res://Actual Assets/Rhythm/time.png" type="Texture" id=5]
+[ext_resource path="res://Actual Assets/Rhythm/Sound/Chopping_Wood.wav" type="AudioStream" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.902344, 0.105743, 0.105743, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="AudioStreamMicrophone" id=5]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -129.479 )
+position = Vector2( 0, -127.697 )
 scale = Vector2( 0.291772, 0.293943 )
 texture = ExtResource( 1 )
 centered = false
 region_rect = Rect2( 0, 0, 1024, 600 )
-
-[node name="Progress_bar" type="ProgressBar" parent="."]
-margin_left = 163.511
-margin_top = 133.327
-margin_right = 471.511
-margin_bottom = 204.327
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
-
-[node name="Button" type="Button" parent="."]
-margin_left = 567.836
-margin_top = 54.7747
-margin_right = 971.836
-margin_bottom = 491.775
-focus_mode = 0
-mouse_default_cursor_shape = 2
-enabled_focus_mode = 0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="sound" type="AudioStreamPlayer" parent="Button"]
-stream = ExtResource( 5 )
 
 [node name="Back_button" parent="." instance=ExtResource( 2 )]
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+
+[node name="Control" type="Control" parent="."]
+margin_left = 806.982
+margin_top = 576.0
+margin_right = 846.982
+margin_bottom = 616.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbNarrator" type="Label" parent="Control"]
+margin_left = -771.876
+margin_top = -312.531
+margin_right = -476.876
+margin_bottom = -278.531
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Готовся к упражнению"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarMic" type="TextureProgress" parent="Control"]
+margin_left = -13.7729
+margin_right = 218.227
+margin_bottom = 56.0
+rect_rotation = 270.0
+min_value = -200.0
+max_value = 0.0
+value = -50.0
+texture_under = SubResource( 2 )
+texture_progress = SubResource( 4 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbMic" type="Label" parent="Control/BarMic"]
+margin_left = 41.0
+margin_top = -79.0
+margin_right = 112.0
+margin_bottom = -39.0
+rect_rotation = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "мик"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbMicDb" type="Label" parent="Control/BarMic"]
+margin_left = 230.0
+margin_top = -142.0
+margin_right = 364.0
+margin_bottom = -102.0
+rect_rotation = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "db"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarMedia" type="TextureProgress" parent="Control"]
+margin_left = 112.018
+margin_right = 384.018
+margin_bottom = 66.0
+rect_rotation = 270.0
+min_value = -90.0
+max_value = 0.0
+value = -50.0
+texture_under = SubResource( 2 )
+texture_progress = SubResource( 4 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbMed" type="Label" parent="Control/BarMedia"]
+margin_left = 42.2599
+margin_top = -68.3898
+margin_right = 113.26
+margin_bottom = -28.3898
+rect_rotation = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "мед"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbMedDb" type="Label" parent="Control/BarMedia"]
+margin_left = 270.587
+margin_top = -138.481
+margin_right = 404.587
+margin_bottom = -98.4806
+rect_rotation = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "db"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarTime" type="TextureProgress" parent="Control"]
+margin_left = -802.0
+margin_top = -573.0
+margin_right = -697.0
+margin_bottom = -467.0
+max_value = 10.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+tint_progress = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stopwatch" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="MicRecorder" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 5 )
+autoplay = true
+bus = "Rhythm"
+
+[node name="Example" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Example"
+[connection signal="timeout" from="Stopwatch" to="." method="_on_Stopwatch_timeout"]

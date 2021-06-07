@@ -19,18 +19,18 @@ func _ready():
 	levelProgress = get_node("lLevelPassed")
 	pass
 
+# warning-ignore:unused_argument
 func _process(delta):
 	power = stepify(AudioServer.\
-	get_bus_peak_volume_left_db(AudioServer.\
-	get_bus_index("Master"), 0), 0.01)
+	get_bus_peak_volume_right_db(AudioServer.\
+	get_bus_index("Blow"), 0), 0.01)
 	if (state == "on"):
-		if (power > -30):
+		if (power > -45):
 			lb.text = stepify(tm.time_left, 0.001) as String
-		if (power < -30):
+		if (power < -45):
 			BlowTrigger()
 			tm.start()
-		mc.text = power as String
-		
+		mc.text = power  as String
 	pass
 
 func _on_Button_pressed():

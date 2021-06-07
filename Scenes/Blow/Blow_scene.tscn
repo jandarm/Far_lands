@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Actual Assets/Blow/Sprites/Bolw_background.jpg" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Blow/Trigger_scene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Blow/Blow_caracter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/NextLvl_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/Refresh_button.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="Blow_Scene" type="Node2D"]
+
+[node name="Panel__for_dandelion_background" type="Panel" parent="."]
+margin_right = 1034.0
+margin_bottom = 608.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TR_dandelion_background" type="TextureRect" parent="Panel__for_dandelion_background"]
+margin_right = 1034.0
+margin_bottom = 608.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trigger_scene" parent="." instance=ExtResource( 4 )]
+position = Vector2( 579.897, -17.1359 )
+scale = Vector2( 1.96246, 1.96246 )
+
+[node name="Back_button" parent="." instance=ExtResource( 3 )]
+margin_left = 15.0
+margin_right = 15.0
+
+[node name="Main_character" parent="." instance=ExtResource( 5 )]
+position = Vector2( -205.093, 296.895 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 153.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Validator" parent="." instance=ExtResource( 6 )]
+jsonPath = "res://Scripts/Manager/Info.json"
+
+[node name="NextLvl_button" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 919.742
+margin_top = 493.889
+margin_right = 919.742
+margin_bottom = 493.889
+
+[node name="Refresh_button" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 125.0
+margin_top = 489.0
+margin_right = 125.0
+margin_bottom = 489.0
