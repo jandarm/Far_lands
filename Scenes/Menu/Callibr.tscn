@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Callibr/Callibration.gd" type="Script" id=1]
 [ext_resource path="res://Actual Assets/Recources/GUI/ProgressBar.png" type="Texture" id=2]
+[ext_resource path="res://Actual Assets/Recources/GUI/Main_back.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 resource_local_to_scene = true
@@ -22,6 +23,14 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 1.6, 1.25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="Pog" type="TextureProgress" parent="."]

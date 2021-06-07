@@ -90,3 +90,5 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Portrait" type="Sprite" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
