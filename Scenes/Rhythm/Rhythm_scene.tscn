@@ -1,33 +1,41 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Actual Assets/Rhythm/ритм.png" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Characters/Mole/load-level2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scripts/Rhythm/Rhythm_Ex.gd" type="Script" id=4]
 [ext_resource path="res://Actual Assets/Rhythm/time.png" type="Texture" id=5]
 [ext_resource path="res://Actual Assets/Rhythm/Sound/Chopping_Wood.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Characters/Mole/Mole.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0, 0, 0, 1 )
+offsets = PoolRealArray(  )
+colors = PoolColorArray(  )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
 [sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0.902344, 0.105743, 0.105743, 1, 1, 1, 1, 1 )
+colors = PoolColorArray( 0.997559, 0.653225, 0.226009, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
 [sub_resource type="AudioStreamMicrophone" id=5]
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.411765, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.12549, 0.0156863, 0.0156863, 1 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -127.697 )
-scale = Vector2( 0.291772, 0.293943 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -248.872, -64.3883 )
+scale = Vector2( 1.23262, 1.26963 )
 texture = ExtResource( 1 )
 centered = false
 region_rect = Rect2( 0, 0, 1024, 600 )
@@ -38,30 +46,34 @@ __meta__ = {
 [node name="Back_button" parent="." instance=ExtResource( 2 )]
 
 [node name="Control" type="Control" parent="."]
-margin_left = 806.982
-margin_top = 576.0
-margin_right = 846.982
-margin_bottom = 616.0
+margin_left = 814.533
+margin_top = 296.613
+margin_right = 854.533
+margin_bottom = 336.613
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lbNarrator" type="Label" parent="Control"]
-margin_left = -771.876
-margin_top = -312.531
-margin_right = -476.876
-margin_bottom = -278.531
+margin_left = -551.97
+margin_top = -90.2053
+margin_right = -248.97
+margin_bottom = 13.7947
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Готовся к упражнению"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BarMic" type="TextureProgress" parent="Control"]
-margin_left = -13.7729
-margin_right = 218.227
-margin_bottom = 56.0
+margin_left = -4.79321
+margin_top = 280.615
+margin_right = 227.207
+margin_bottom = 336.615
 rect_rotation = 270.0
 min_value = -200.0
 max_value = 0.0
@@ -104,9 +116,10 @@ __meta__ = {
 }
 
 [node name="BarMedia" type="TextureProgress" parent="Control"]
-margin_left = 112.018
-margin_right = 384.018
-margin_bottom = 66.0
+margin_left = 120.998
+margin_top = 280.615
+margin_right = 392.998
+margin_bottom = 346.615
 rect_rotation = 270.0
 min_value = -90.0
 max_value = 0.0
@@ -149,14 +162,15 @@ __meta__ = {
 }
 
 [node name="BarTime" type="TextureProgress" parent="Control"]
-margin_left = -802.0
-margin_top = -573.0
-margin_right = -697.0
-margin_bottom = -467.0
-max_value = 10.0
+margin_left = -800.112
+margin_top = -201.114
+margin_right = -695.112
+margin_bottom = -95.1135
+max_value = 5.0
+step = 0.05
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 5 )
-fill_mode = 3
+fill_mode = 2
 tint_progress = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 nine_patch_stretch = true
 __meta__ = {
@@ -164,8 +178,12 @@ __meta__ = {
 }
 
 [node name="Stopwatch" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
+
+[node name="ClapTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="MicRecorder" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 5 )
@@ -174,6 +192,38 @@ bus = "Rhythm"
 
 [node name="Example" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
 bus = "Example"
+
+[node name="Mole" parent="." instance=ExtResource( 7 )]
+position = Vector2( 416.363, 444.233 )
+
+[node name="WaitingDebug" type="ProgressBar" parent="."]
+margin_left = 17.4441
+margin_top = 28.422
+margin_right = 237.444
+margin_bottom = 70.422
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+max_value = 3.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteMe" type="Label" parent="."]
+margin_left = 427.011
+margin_top = 58.7338
+margin_right = 786.011
+margin_bottom = 169.734
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Validator" parent="." instance=ExtResource( 8 )]
 [connection signal="timeout" from="Stopwatch" to="." method="_on_Stopwatch_timeout"]
+[connection signal="timeout" from="ClapTime" to="." method="_on_ClapTime_timeout"]
+[connection signal="finished" from="Example" to="." method="_on_Example_finished"]

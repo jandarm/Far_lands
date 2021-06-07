@@ -1,8 +1,9 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=1]
 
 [resource]
 resource_local_to_scene = true
-size = 30
+size = 20
+outline_size = 5
 font_data = ExtResource( 1 )
