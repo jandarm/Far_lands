@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/Planks.png" type="Texture" id=1]
 [ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scripts/Dialogs/Dialog.gd" type="Script" id=4]
+[ext_resource path="res://Actual Assets/Characters/Mole/Idle/mole_idle.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -28,12 +29,19 @@ __meta__ = {
 }
 
 [node name="Dim" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-color = Color( 0.0784314, 0.101961, 0.192157, 0.160784 )
+margin_left = -0.187317
+margin_top = 0.187317
+margin_right = 1023.81
+margin_bottom = 600.187
+color = Color( 0, 0, 0, 0.976471 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Portrait" type="Sprite" parent="."]
+position = Vector2( 849.305, 457.448 )
+scale = Vector2( 12.282, 12.282 )
+texture = ExtResource( 5 )
 
 [node name="Dialog_box" type="TextureRect" parent="."]
 margin_left = 46.0
@@ -46,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Dialog_box"]
+[node name="Name_box" type="TextureRect" parent="Dialog_box"]
 margin_left = -33.237
 margin_top = -36.0575
 margin_right = 227.763
@@ -57,7 +65,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Dialog_box/TextureRect"]
+[node name="Name" type="Label" parent="Dialog_box/Name_box"]
 margin_left = 18.0
 margin_top = 13.0
 margin_right = 245.0
@@ -88,7 +96,9 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 
-[node name="Portrait" type="Sprite" parent="."]
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Indicator" type="Polygon2D" parent="."]
+position = Vector2( 724.15, 358.835 )
+texture_scale = Vector2( 50, 50 )
+polygon = PoolVector2Array( 163.936, 169.656, 184.668, 197.556, 206.96, 169.742 )

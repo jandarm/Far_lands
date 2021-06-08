@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Objects/MenuControls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actual Assets/Recources/GUI/Frame.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Recources/GUI/Source/Tottally_not_a_reference.png" type="Texture" id=7]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -27,9 +28,9 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
 resource_local_to_scene = true
-size = 30
+size = 20
 outline_size = 5
-font_data = ExtResource( 3 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Frame_wiggle"
@@ -73,19 +74,16 @@ __meta__ = {
 [node name="Frame" type="Sprite" parent="Graphics"]
 material = SubResource( 2 )
 position = Vector2( 726.753, 124.274 )
-rotation = -0.000799456
+rotation = -0.020469
 scale = Vector2( 0.779911, 0.741844 )
 z_index = 1
 texture = ExtResource( 6 )
 offset = Vector2( -1.36621, 240.745 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Tottally_not_a_reference" type="Sprite" parent="Graphics/Frame"]
 use_parent_material = true
-position = Vector2( -198.196, 204.909 )
-scale = Vector2( 0.961648, 1.25813 )
+position = Vector2( -168.387, 205.089 )
+scale = Vector2( 0.80363, 0.978864 )
 z_as_relative = false
 texture = ExtResource( 7 )
 centered = false
@@ -99,12 +97,6 @@ margin_left = 564.435
 margin_top = 502.974
 margin_right = 884.435
 margin_bottom = 557.974
-
-[node name="Button" parent="Control" index="1"]
-margin_left = 332.587
-margin_top = 161.209
-margin_right = 386.587
-margin_bottom = 201.209
 
 [node name="btnMap" parent="Control" index="2"]
 margin_left = 65.5874
@@ -128,11 +120,7 @@ margin_top = 382.209
 margin_right = 392.587
 margin_bottom = 444.209
 
-[node name="Label" parent="Control" index="6"]
-margin_left = 65.5874
-margin_top = 161.209
-margin_right = 314.587
-margin_bottom = 201.209
+[node name="lUserName" parent="Control" index="6"]
 custom_fonts/font = SubResource( 4 )
 
 [node name="Validator" parent="." instance=ExtResource( 5 )]
@@ -147,7 +135,6 @@ tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 8 )
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
 [connection signal="pressed" from="Control/btnSettings" to="Control" method="_callibrate_Me"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
