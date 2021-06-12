@@ -78,13 +78,13 @@ func _on_Timer_timeout():
 			rmsSilent = calculate_RMS(stamps)
 			get_node("Mass").text = rmsSilent as String
 			lb.text = "Приготовься дуть в микрофон"
+			get_node("Listener").bus = "Blow_bus"
 			tmCount += 1
 			tm.start()
 			stamps.clear()
 		2:
 			canRecord = true
-			recordMode = "Blow"
-			get_node("Listener").bus = "Blow_bus"
+			recordMode = "Blow"	
 			lb.text = "Дуй!"
 			tmCount += 1
 			tm.start()

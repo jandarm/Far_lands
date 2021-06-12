@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Dialog/Dialog_scene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Rhythm/Counting_Ex.gd" type="Script" id=2]
+
+[node name="Counting_scene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Dialog" parent="." instance=ExtResource( 1 )]
+dialogPath = "res://Scripts/Dialogs/Count_dialog.json"
+textSpeed = 0.03

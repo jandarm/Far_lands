@@ -175,3 +175,8 @@ func calculate_Power():
 	get_bus_peak_volume_right_db(AudioServer.\
 	get_bus_index("Rhythm"), 0), 0.01)
 	return power
+
+
+func dialog_Finished():
+	
+	pass

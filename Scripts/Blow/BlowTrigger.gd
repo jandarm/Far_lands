@@ -5,7 +5,6 @@ var interaction_time_label
 var mic_volume
 var state = "off"
 var power
-var noize_status
 var level_progress
 var character
 var successful_attempts = 0
@@ -19,7 +18,6 @@ func _ready():
 	interaction_time = get_node("TimeOfInteraction")
 	interaction_time_label = get_node("lTimeOfIteraction")
 	mic_volume = get_node("lMicVolume")	
-	noize_status = get_node("lNoize")	
 	level_progress = get_node("lLevelPassed")
 	character = get_parent().get_node("Main_character")
 	waiting_time = get_node("Waiting_time")
@@ -35,11 +33,11 @@ func _process(delta):
 		waiting_label.text = stepify(waiting_time.time_left, 0) as String
 		if(waiting_time.time_left == 0):
 			EndOfWaitingTime()
-		if (power > -40): 
+		if (power > Manager.RmsBlow): 
 			interaction_time_label.text = stepify(interaction_time.time_left, 0.001) as String
 			character.character_blowing()
 			waiting_time.start()
-		if (power < -40):
+		if (power < Manager.RmsBlow):
 			BlowTrigger()
 			interaction_time.start()
 		mic_volume.text = power as String

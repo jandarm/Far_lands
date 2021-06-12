@@ -10,6 +10,7 @@ var finished = false
 
 var nm
 var txt
+signal dialog_finished
 
 func _ready():
 	nm = get_node("Dialog_box/Name_box/Name")
@@ -45,6 +46,8 @@ func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
 		queue_free()
 		Manager.start_ex = true
+		connect("dialog_finished", self.owner, "dialog_Finished")
+		emit_signal("dialog_finished")
 		return
 	
 	finished = false
