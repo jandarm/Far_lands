@@ -44,7 +44,8 @@ func getDialog() -> Array:
  
 func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
-		queue_free()
+		set_process(false)
+		visible = false
 		Manager.start_ex = true
 		connect("dialog_finished", self.owner, "dialog_Finished")
 		emit_signal("dialog_finished")

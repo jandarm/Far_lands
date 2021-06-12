@@ -45,9 +45,8 @@ func _process(delta):
 	_paint_Bar_media()
 	#mole.play_animation(animationState)
 	
-	if (Manager.start_ex):
-		watch.start()
-		Manager.start_ex = false
+	if($Dialog.visible):
+		yield($Dialog, "dialog_finished")
 	
 	record_Mic_check()
 	record_Media_check()
@@ -178,5 +177,5 @@ func calculate_Power():
 
 
 func dialog_Finished():
-	
+	watch.start()
 	pass
