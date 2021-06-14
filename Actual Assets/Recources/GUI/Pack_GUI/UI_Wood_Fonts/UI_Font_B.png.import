@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Пухляш-весёлый.png-55fc5e9954b9fb8a214b7f2459c17986.stex"
+path="res://.import/UI_Font_B.png-1e115ae86644922c26e7995ed0f1f13a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actual Assets/Characters/Пухляш/Пухляш-весёлый.png"
-dest_files=[ "res://.import/Пухляш-весёлый.png-55fc5e9954b9fb8a214b7f2459c17986.stex" ]
+source_file="res://Actual Assets/Recources/GUI/Pack_GUI/UI_Wood_Fonts/UI_Font_B.png"
+dest_files=[ "res://.import/UI_Font_B.png-1e115ae86644922c26e7995ed0f1f13a.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

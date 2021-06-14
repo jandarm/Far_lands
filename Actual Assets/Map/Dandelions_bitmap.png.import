@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/Dandelions_bitmap.png-ed6194bc0326c2f91fdf50f1e395530f.res"
+
+[deps]
+
+source_file="res://Actual Assets/Map/Dandelions_bitmap.png"
+dest_files=[ "res://.import/Dandelions_bitmap.png-ed6194bc0326c2f91fdf50f1e395530f.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
