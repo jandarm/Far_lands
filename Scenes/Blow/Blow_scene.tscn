@@ -1,19 +1,33 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Actual Assets/Blow/Sprites/Bolw_background.jpg" type="Texture" id=1]
 [ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Blow/Trigger_scene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Blow/Blow_caracter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Objects/NextLvl_button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/Refresh_button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Actual Assets/Characters/Пухляш/Пухляш-all_2.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Dialog/Dialog_scene.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+size = 20
+outline_size = 5
+font_data = ExtResource( 11 )
 
 [node name="Blow_Scene" type="Node2D"]
 
@@ -53,9 +67,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Validator" parent="." instance=ExtResource( 6 )]
-jsonPath = "res://Scripts/Manager/Info.json"
-
 [node name="NextLvl_button" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 919.742
@@ -69,3 +80,22 @@ margin_left = 125.0
 margin_top = 489.0
 margin_right = 125.0
 margin_bottom = 489.0
+
+[node name="Dialog" parent="." instance=ExtResource( 10 )]
+visible = false
+dialogPath = "res://Scripts/Dialogs/Blow_dialog.json"
+
+[node name="Portrait" parent="Dialog" index="1"]
+position = Vector2( 790.86, 367.917 )
+texture = ExtResource( 9 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Name" parent="Dialog/Dialog_box/Name_box" index="0"]
+custom_fonts/font = SubResource( 3 )
+
+[node name="Message" parent="Dialog/Dialog_box" index="1"]
+custom_fonts/normal_font = SubResource( 4 )
+
+[editable path="Dialog"]

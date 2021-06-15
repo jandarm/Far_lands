@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Пухляш-страх.png-57e173e2a755eb76fc0f9e9d681d2870.stex"
+path="res://.import/NextLvl.png-399803143aa12036d60463b02f60dbcc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actual Assets/Characters/Пухляш/Пухляш-страх.png"
-dest_files=[ "res://.import/Пухляш-страх.png-57e173e2a755eb76fc0f9e9d681d2870.stex" ]
+source_file="res://Actual Assets/Recources/GUI/Pack_GUI/Icons/NextLvl.png"
+dest_files=[ "res://.import/NextLvl.png-399803143aa12036d60463b02f60dbcc.stex" ]
 
 [params]
 

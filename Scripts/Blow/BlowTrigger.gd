@@ -27,6 +27,7 @@ func _ready():
 	nextlvlv_button = get_parent().get_node("NextLvl_button")
 	refresh_button = get_parent().get_node("Refresh_button")
 	
+# warning-ignore:unused_argument
 func _process(delta):
 	power = stepify(AudioServer.\
 	get_bus_peak_volume_right_db(AudioServer.\

@@ -2,11 +2,9 @@ extends Node
 
 var validator
 
-
 func _ready():
 	validator = get_parent().get_node("Validator")
 	pass
-
 
 func _go_Map():
 # warning-ignore:return_value_discarded
@@ -35,15 +33,12 @@ func _on_Moll_pressed():
 	get_tree().change_scene("res://Scenes/Rhythm/Rhythm_scene.tscn")
 	pass
 
-
 func _on_Cave_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/Blow/Blow_scene.tscn")
 	pass
 
-
 func _on_Go_back_pressed():
-	#какая-то дичь, 
 	#emit_signal: Error calling method from signal
 	# 'pressed': 'Button::_on_Go_back_pressed': 
 	#Method not found..
@@ -51,13 +46,9 @@ func _on_Go_back_pressed():
 	get_tree().change_scene("res://Scenes/Menu/MainMenu.tscn")
 	pass
 
-
-func _on_Button_pressed():
-	# warning-ignore:return_value_discarded
+func _on_btnUsers_pressed():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/Menu/Users.tscn")
-	pass
-
 
 func _on_btnExit_pressed():
 	get_tree().quit()
-	pass
