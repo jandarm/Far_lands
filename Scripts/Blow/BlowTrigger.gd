@@ -25,6 +25,7 @@ func _ready():
 	nextlvlv_button = get_parent().get_node("NextLvl_button")
 	refresh_button = get_parent().get_node("Refresh_button")
 	
+# warning-ignore:unused_argument
 func _process(delta):
 	power = stepify(AudioServer.\
 	get_bus_peak_volume_right_db(AudioServer.\
@@ -33,11 +34,11 @@ func _process(delta):
 		waiting_label.text = stepify(waiting_time.time_left, 0) as String
 		if(waiting_time.time_left == 0):
 			EndOfWaitingTime()
-		if (power > Manager.RmsBlow): 
+		if (power > -40): 
 			interaction_time_label.text = stepify(interaction_time.time_left, 0.001) as String
 			character.character_blowing()
 			waiting_time.start()
-		if (power < Manager.RmsBlow):
+		if (power < -40):
 			BlowTrigger()
 			interaction_time.start()
 		mic_volume.text = power as String

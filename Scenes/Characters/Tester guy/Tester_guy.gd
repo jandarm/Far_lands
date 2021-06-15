@@ -1,16 +1,11 @@
 extends Node
 
-func _ready():
-	pass
-	
-func  guy_Sad ():
-	get_node("Sprite").texture = load("res://Actual Assets/Characters/Tester_guy/Tester_guy_sad.png")
-	pass
+var stateMachine
 
-func  guy_Happy ():
-	get_node("Sprite").texture = load("res://Actual Assets/Characters/Tester_guy/Tester_guy_happy.png")
+func _ready():
+	stateMachine = get_node("AnimationTree").get("parameters/playback")
 	pass
 	
-func  guy_Neutral ():
-	get_node("Sprite").texture = load("res://Actual Assets/Characters/Tester_guy/Tester_guy_neutral.png")
+func play_animation (name):
+	stateMachine.travel(name)
 	pass

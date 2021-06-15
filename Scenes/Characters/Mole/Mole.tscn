@@ -94,34 +94,34 @@ animation = "Sad"
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Sad_transition"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Success"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachine" id=12]
+[sub_resource type="AnimationNodeStateMachine" id=15]
 states/Idle/node = SubResource( 6 )
 states/Idle/position = Vector2( 121, 38 )
 states/Sad/node = SubResource( 7 )
 states/Sad/position = Vector2( 246, 150 )
 states/Sad_transition/node = SubResource( 8 )
 states/Sad_transition/position = Vector2( 382, 38 )
-states/Success/node = SubResource( 17 )
+states/Success/node = SubResource( 9 )
 states/Success/position = Vector2( 3, 150 )
-transitions = [ "Idle", "Sad_transition", SubResource( 14 ), "Sad_transition", "Sad", SubResource( 15 ), "Sad", "Idle", SubResource( 16 ), "Idle", "Success", SubResource( 18 ), "Success", "Idle", SubResource( 19 ) ]
+transitions = [ "Idle", "Sad_transition", SubResource( 10 ), "Sad_transition", "Sad", SubResource( 11 ), "Sad", "Idle", SubResource( 12 ), "Idle", "Success", SubResource( 13 ), "Success", "Idle", SubResource( 14 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -95, -26 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
 [node name="Mole" type="Node2D"]
 script = ExtResource( 3 )
@@ -141,7 +141,7 @@ anims/Success = SubResource( 4 )
 "anims/Новая анимация" = SubResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 13 )
+parameters/playback = SubResource( 16 )

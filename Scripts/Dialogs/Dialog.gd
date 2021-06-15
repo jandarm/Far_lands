@@ -47,6 +47,7 @@ func nextPhrase() -> void:
 		set_process(false)
 		visible = false
 		Manager.start_ex = true
+# warning-ignore:return_value_discarded
 		connect("dialog_finished", self.owner, "dialog_Finished")
 		emit_signal("dialog_finished")
 		return

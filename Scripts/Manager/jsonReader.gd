@@ -29,3 +29,7 @@ func write_test(jsonPath):
 	file.store_line(to_json(levelData))
 	file.close()
 	pass
+
+func initiate_Path():
+	levelData = get_info("res://Scripts/Manager/Info.json")
+	pass

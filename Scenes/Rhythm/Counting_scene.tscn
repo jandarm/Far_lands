@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scenes/Dialog/Dialog_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Rhythm/Counting_Ex.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/Numbers_pressed.png" type="Texture" id=4]
 [ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/Numbers_hover.png" type="Texture" id=5]
 [ext_resource path="res://Actual Assets/Characters/Пухляш/Puffer_sheet.png" type="Texture" id=6]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/Objects/NextLvl_button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/Refresh_button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Characters/Tester guy/Tester_guy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -17,7 +22,7 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
-region = Rect2( 0, -5, 32, 32 )
+region = Rect2( 0, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
@@ -29,7 +34,7 @@ region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
-region = Rect2( 32, -5, 32, 32 )
+region = Rect2( 32, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
@@ -41,7 +46,7 @@ region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 5 )
-region = Rect2( 64, -5, 32, 32 )
+region = Rect2( 64, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
@@ -53,7 +58,7 @@ region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 5 )
-region = Rect2( 96, -5, 32, 32 )
+region = Rect2( 96, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 3 )
@@ -65,7 +70,7 @@ region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 5 )
-region = Rect2( 128, -5, 32, 32 )
+region = Rect2( 128, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 3 )
@@ -77,7 +82,7 @@ region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 5 )
-region = Rect2( 160, -5, 32, 32 )
+region = Rect2( 160, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
@@ -89,7 +94,7 @@ region = Rect2( 192, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 5 )
-region = Rect2( 192, -5, 32, 32 )
+region = Rect2( 192, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 3 )
@@ -101,7 +106,7 @@ region = Rect2( 224, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 5 )
-region = Rect2( 224, -5, 32, 32 )
+region = Rect2( 224, 5, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
@@ -113,7 +118,7 @@ region = Rect2( 256, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 5 )
-region = Rect2( 256, -5, 32, 32 )
+region = Rect2( 256, 5, 32, 32 )
 
 [sub_resource type="Animation" id=28]
 resource_name = "Actual_blow"
@@ -197,7 +202,7 @@ tracks/2/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=30]
 resource_name = "Puffer_idle"
 length = 1.1
 loop = true
@@ -238,8 +243,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5.09505, 6.16806 ), Vector2( 5.09505, 5.3431 ) ]
 }
 
-[sub_resource type="Animation" id=30]
-resource_name = "Puffer_run"
+[sub_resource type="Animation" id=31]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -255,8 +259,7 @@ tracks/0/keys = {
 "values": [ 14, 15 ]
 }
 
-[sub_resource type="Animation" id=31]
-resource_name = "Puffer_tired"
+[sub_resource type="Animation" id=32]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -271,7 +274,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=33]
 resource_name = "Puffer_victory"
 length = 0.5
 loop = true
@@ -300,8 +303,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=32]
-resource_name = "Test_Puffer_blow"
+[sub_resource type="Animation" id=34]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -332,13 +334,11 @@ animation = "Puffer_run"
 [sub_resource type="AnimationNodeAnimation" id=39]
 animation = "Puffer_tired"
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "Puffer_victory"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "Test_Puffer_blow"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
 
@@ -355,50 +355,85 @@ animation = "Test_Puffer_blow"
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
 
-[sub_resource type="AnimationNodeStateMachine" id=53]
+[sub_resource type="AnimationNodeStateMachine" id=56]
 states/Actual_blow/node = SubResource( 35 )
 states/Actual_blow/position = Vector2( 685, 189 )
 states/Blow_idle/node = SubResource( 36 )
-states/Blow_idle/position = Vector2( 463, 69 )
+states/Blow_idle/position = Vector2( 520, 50 )
 states/Puffer_idle/node = SubResource( 37 )
-states/Puffer_idle/position = Vector2( 48, 136 )
+states/Puffer_idle/position = Vector2( -61, 76 )
 states/Puffer_run/node = SubResource( 38 )
 states/Puffer_run/position = Vector2( 80, 268 )
 states/Puffer_tired/node = SubResource( 39 )
 states/Puffer_tired/position = Vector2( 306, 282 )
-states/Puffer_victory/node = SubResource( 55 )
+states/Puffer_victory/node = SubResource( 40 )
 states/Puffer_victory/position = Vector2( 592, 303 )
-states/Test_Puffer_blow/node = SubResource( 40 )
-states/Test_Puffer_blow/position = Vector2( 262, 56 )
-transitions = [ "Puffer_idle", "Puffer_run", SubResource( 41 ), "Puffer_run", "Puffer_idle", SubResource( 42 ), "Puffer_idle", "Test_Puffer_blow", SubResource( 43 ), "Blow_idle", "Actual_blow", SubResource( 44 ), "Actual_blow", "Test_Puffer_blow", SubResource( 45 ), "Actual_blow", "Puffer_idle", SubResource( 46 ), "Actual_blow", "Puffer_run", SubResource( 47 ), "Blow_idle", "Puffer_run", SubResource( 48 ), "Test_Puffer_blow", "Blow_idle", SubResource( 49 ), "Puffer_tired", "Puffer_idle", SubResource( 50 ), "Puffer_run", "Test_Puffer_blow", SubResource( 51 ), "Actual_blow", "Puffer_tired", SubResource( 52 ), "Actual_blow", "Puffer_victory", SubResource( 56 ), "Puffer_victory", "Puffer_idle", SubResource( 57 ) ]
+states/Test_Puffer_blow/node = SubResource( 41 )
+states/Test_Puffer_blow/position = Vector2( 229, 28 )
+transitions = [ "Puffer_idle", "Puffer_run", SubResource( 42 ), "Puffer_run", "Puffer_idle", SubResource( 43 ), "Puffer_idle", "Test_Puffer_blow", SubResource( 44 ), "Blow_idle", "Actual_blow", SubResource( 45 ), "Actual_blow", "Test_Puffer_blow", SubResource( 46 ), "Actual_blow", "Puffer_idle", SubResource( 47 ), "Actual_blow", "Puffer_run", SubResource( 48 ), "Blow_idle", "Puffer_run", SubResource( 49 ), "Test_Puffer_blow", "Blow_idle", SubResource( 50 ), "Puffer_tired", "Puffer_idle", SubResource( 51 ), "Puffer_run", "Test_Puffer_blow", SubResource( 52 ), "Actual_blow", "Puffer_tired", SubResource( 53 ), "Actual_blow", "Puffer_victory", SubResource( 54 ), "Puffer_victory", "Puffer_idle", SubResource( 55 ) ]
 start_node = "Puffer_idle"
-graph_offset = Vector2( -31, 10 )
+graph_offset = Vector2( -225.036, -22 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=57]
+
+[sub_resource type="DynamicFont" id=58]
+resource_local_to_scene = true
+size = 30
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=59]
+resource_local_to_scene = true
+size = 30
+outline_size = 5
+outline_color = Color( 0.52549, 0.784314, 0.862745, 1 )
+font_data = ExtResource( 7 )
 
 [node name="Counting_scene" type="Node2D"]
 script = ExtResource( 2 )
+Instruments = [ "res://Actual Assets/Rhythm/Sound/Instruments/Bump.wav", "res://Actual Assets/Rhythm/Sound/Instruments/Glass.wav", "res://Actual Assets/Rhythm/Sound/Instruments/Pot.wav", "res://Actual Assets/Rhythm/Sound/Instruments/Toy.wav", "res://Actual Assets/Rhythm/Sound/Instruments/Triangle.wav" ]
+
+[node name="Refresh" parent="." instance=ExtResource( 9 )]
+visible = false
+margin_left = 127.356
+margin_top = 491.445
+margin_right = 127.356
+margin_bottom = 491.445
+
+[node name="Next" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 889.994
+margin_top = 491.445
+margin_right = 889.994
+margin_bottom = 491.445
+
+[node name="Back_button" parent="." instance=ExtResource( 11 )]
+
+[node name="Guy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 504.929, 343.943 )
+scale = Vector2( 8.84871, 8.84871 )
 
 [node name="NumberButtons" type="GridContainer" parent="."]
 margin_left = 20.0
-margin_top = 504.022
+margin_top = -16.0
 margin_right = 1001.0
-margin_bottom = 613.022
+margin_bottom = 93.0
 size_flags_vertical = 2
 columns = 9
 __meta__ = {
@@ -540,15 +575,10 @@ texture_hover = SubResource( 27 )
 expand = true
 stretch_mode = 4
 
-[node name="Dialog" parent="." instance=ExtResource( 1 )]
-visible = false
-dialogPath = "res://Scripts/Dialogs/Count_dialog.json"
-textSpeed = 0.03
-
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-position = Vector2( -318.115, 335.828 )
-scale = Vector2( 5.09533, 5.5078 )
+position = Vector2( -173.243, 342.475 )
+scale = Vector2( 5.09533, 5.51941 )
 texture = ExtResource( 6 )
 vframes = 3
 hframes = 7
@@ -557,13 +587,66 @@ frame = 11
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Actual_blow = SubResource( 28 )
 anims/Blow_idle = SubResource( 29 )
-anims/Puffer_idle = SubResource( 33 )
-anims/Puffer_run = SubResource( 30 )
-anims/Puffer_tired = SubResource( 31 )
-anims/Puffer_victory = SubResource( 34 )
-anims/Test_Puffer_blow = SubResource( 32 )
+anims/Puffer_idle = SubResource( 30 )
+anims/Puffer_run = SubResource( 31 )
+anims/Puffer_tired = SubResource( 32 )
+anims/Puffer_victory = SubResource( 33 )
+anims/Test_Puffer_blow = SubResource( 34 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 53 )
+tree_root = SubResource( 56 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 54 )
+parameters/playback = SubResource( 57 )
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+bus = "Example"
+
+[node name="lbRng" type="Label" parent="."]
+margin_left = 85.0
+margin_top = 115.0
+margin_right = 446.0
+margin_bottom = 201.0
+custom_fonts/font = SubResource( 58 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "111"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbTimes" type="Label" parent="."]
+margin_left = 564.0
+margin_top = 119.0
+margin_right = 938.0
+margin_bottom = 226.0
+custom_fonts/font = SubResource( 59 )
+custom_colors/font_color = Color( 0.00784314, 0.188235, 0.611765, 1 )
+text = "222"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" parent="." instance=ExtResource( 1 )]
+visible = false
+dialogPath = "res://Scripts/Dialogs/Count_dialog.json"
+textSpeed = 0.03
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="pressed" from="NumberButtons/btn_1" to="." method="answer" binds= [ 1 ]]
+[connection signal="pressed" from="NumberButtons/btn_2" to="." method="answer" binds= [ 2 ]]
+[connection signal="pressed" from="NumberButtons/btn_3" to="." method="answer" binds= [ 3 ]]
+[connection signal="pressed" from="NumberButtons/btn_4" to="." method="answer" binds= [ 4 ]]
+[connection signal="pressed" from="NumberButtons/btn_5" to="." method="answer" binds= [ 5 ]]
+[connection signal="pressed" from="NumberButtons/btn_6" to="." method="answer" binds= [ 6 ]]
+[connection signal="pressed" from="NumberButtons/btn_7" to="." method="answer" binds= [ 7 ]]
+[connection signal="pressed" from="NumberButtons/btn_8" to="." method="answer" binds= [ 8 ]]
+[connection signal="pressed" from="NumberButtons/btn_9" to="." method="answer" binds= [ 9 ]]
+[connection signal="finished" from="Player" to="." method="_on_Player_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
