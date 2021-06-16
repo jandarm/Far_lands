@@ -5,7 +5,7 @@ var RmsRhythm
 var start_ex = false
 
 func _ready():
-	RmsBlow = -20
+	RmsBlow = -40
 	RmsRhythm = -50
 	pass
 

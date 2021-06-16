@@ -74,7 +74,7 @@ __meta__ = {
 [node name="Frame" type="Sprite" parent="Graphics"]
 material = SubResource( 2 )
 position = Vector2( 726.753, 124.274 )
-rotation = -0.0101037
+rotation = 0.006533
 scale = Vector2( 0.779911, 0.741844 )
 z_index = 1
 texture = ExtResource( 6 )
