@@ -138,7 +138,11 @@ func record_Media_check():
 
 
 func timing():
-	
+	for timing in stampsMic:
+		if(timing >= stampsMedia[timing] + 1 && timing <= stampsMedia[timing] - 1):
+			return true
+		else:
+			return false
 	pass 
 
 

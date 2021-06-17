@@ -443,7 +443,7 @@ __meta__ = {
 
 [node name="btn_1" type="TextureButton" parent="NumberButtons"]
 margin_right = 105.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -458,7 +458,7 @@ stretch_mode = 4
 [node name="btn_2" type="TextureButton" parent="NumberButtons"]
 margin_left = 109.0
 margin_right = 214.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -473,7 +473,7 @@ stretch_mode = 4
 [node name="btn_3" type="TextureButton" parent="NumberButtons"]
 margin_left = 218.0
 margin_right = 323.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -488,7 +488,7 @@ stretch_mode = 4
 [node name="btn_4" type="TextureButton" parent="NumberButtons"]
 margin_left = 327.0
 margin_right = 432.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -503,7 +503,7 @@ stretch_mode = 4
 [node name="btn_5" type="TextureButton" parent="NumberButtons"]
 margin_left = 436.0
 margin_right = 541.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -518,7 +518,7 @@ stretch_mode = 4
 [node name="btn_6" type="TextureButton" parent="NumberButtons"]
 margin_left = 545.0
 margin_right = 650.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -533,7 +533,7 @@ stretch_mode = 4
 [node name="btn_7" type="TextureButton" parent="NumberButtons"]
 margin_left = 654.0
 margin_right = 759.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -548,7 +548,7 @@ stretch_mode = 4
 [node name="btn_8" type="TextureButton" parent="NumberButtons"]
 margin_left = 763.0
 margin_right = 868.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -563,7 +563,7 @@ stretch_mode = 4
 [node name="btn_9" type="TextureButton" parent="NumberButtons"]
 margin_left = 872.0
 margin_right = 977.0
-margin_bottom = 108.0
+margin_bottom = 109.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3

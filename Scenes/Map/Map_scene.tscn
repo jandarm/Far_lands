@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Actual Assets/Recources/Shaders/outline.shader" type="Shader" id=1]
 [ext_resource path="res://Actual Assets/Map/Puffer_bitmap.png" type="BitMap" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://Actual Assets/Map/Moll.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Map/Puffer.png" type="Texture" id=7]
 [ext_resource path="res://Actual Assets/Map/Land.png" type="Texture" id=8]
-[ext_resource path="res://Actual Assets/Characters/Пухляш/Пухляш-all_2.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/Buttons/Go_Scene_1.vs" type="Script" id=10]
-[ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=11]
-[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Actual Assets/Map/Dandelions.png" type="Texture" id=13]
 [ext_resource path="res://Actual Assets/Map/Dandelions_bitmap.png" type="BitMap" id=14]
 
@@ -141,7 +137,6 @@ __meta__ = {
 [node name="Event_controll" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -152,9 +147,6 @@ margin_left = -3.16449
 margin_top = -487.736
 margin_right = -3.16449
 margin_bottom = -487.736
-
-[node name="Go_back" parent="Event_controll/Back_button" index="0"]
-script = null
 
 [node name="Moll" type="TextureButton" parent="Event_controll"]
 material = SubResource( 4 )
@@ -199,37 +191,14 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Go_Scene_1" type="Button" parent="Event_controll"]
-margin_left = 113.0
-margin_top = 474.0
-margin_right = 176.0
-margin_bottom = 533.0
-mouse_default_cursor_shape = 2
-flat = true
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="Event_controll/Go_Scene_1"]
-position = Vector2( 32.7431, 28.6706 )
-scale = Vector2( 1.51585, 1.51585 )
-texture = ExtResource( 9 )
-vframes = 2
-hframes = 2
-
-[node name="Validator" parent="." instance=ExtResource( 12 )]
 [connection signal="pressed" from="Event_controll/Back_button/Go_back" to="Event_controll" method="_on_Go_back_pressed"]
 [connection signal="mouse_entered" from="Event_controll/Moll" to="." method="_shader_entered" binds= [ "Moll" ]]
 [connection signal="mouse_exited" from="Event_controll/Moll" to="." method="_shader_exited" binds= [ "Moll" ]]
-[connection signal="pressed" from="Event_controll/Moll" to="Event_controll" method="_on_Moll_pressed"]
+[connection signal="pressed" from="Event_controll/Moll" to="Event_controll/Back_button" method="_change_Scene" binds= [ "Mole" ]]
 [connection signal="mouse_entered" from="Event_controll/Cave" to="." method="_shader_entered" binds= [ "Cave" ]]
 [connection signal="mouse_exited" from="Event_controll/Cave" to="." method="_shader_exited" binds= [ "Cave" ]]
-[connection signal="pressed" from="Event_controll/Cave" to="Event_controll" method="_on_Cave_pressed"]
+[connection signal="pressed" from="Event_controll/Cave" to="Event_controll/Back_button" method="_change_Scene" binds= [ "Blow" ]]
 [connection signal="mouse_entered" from="Event_controll/Dandelions" to="." method="_shader_entered" binds= [ "Dandelions" ]]
 [connection signal="mouse_exited" from="Event_controll/Dandelions" to="." method="_shader_exited" binds= [ "Dandelions" ]]
-[connection signal="pressed" from="Event_controll/Go_Scene_1" to="Event_controll/Go_Scene_1" method="_on_Go_Scene_1_pressed"]
 
 [editable path="Event_controll/Back_button"]
