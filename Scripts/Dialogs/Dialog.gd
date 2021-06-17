@@ -60,7 +60,6 @@ func nextPhrase() -> void:
 		
 		$Timer.start()
 		yield($Timer, "timeout")
-	
 	finished = true
 	phraseNum += 1
 	return

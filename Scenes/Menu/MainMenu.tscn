@@ -74,7 +74,7 @@ __meta__ = {
 [node name="Frame" type="Sprite" parent="Graphics"]
 material = SubResource( 2 )
 position = Vector2( 726.753, 124.274 )
-rotation = -0.020469
+rotation = 0.006533
 scale = Vector2( 0.779911, 0.741844 )
 z_index = 1
 texture = ExtResource( 6 )
@@ -97,6 +97,9 @@ margin_left = 564.435
 margin_top = 502.974
 margin_right = 884.435
 margin_bottom = 557.974
+
+[node name="btnUsers" parent="Control" index="1"]
+mouse_default_cursor_shape = 2
 
 [node name="btnMap" parent="Control" index="2"]
 margin_left = 65.5874
@@ -135,6 +138,7 @@ tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 8 )
+[connection signal="pressed" from="Control/btnUsers" to="Control" method="_on_btnUsers_pressed"]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
 [connection signal="pressed" from="Control/btnSettings" to="Control" method="_callibrate_Me"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
