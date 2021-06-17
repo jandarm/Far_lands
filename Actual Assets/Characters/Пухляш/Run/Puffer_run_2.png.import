@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Пухляш.png-89a7b43f2e15a0b95a2e2b07c28cef01.stex"
+path="res://.import/Puffer_run_2.png-8455ad18f8bfb3e47a638c270db76ce4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actual Assets/Characters/Пухляш/Пухляш.png"
-dest_files=[ "res://.import/Пухляш.png-89a7b43f2e15a0b95a2e2b07c28cef01.stex" ]
+source_file="res://Actual Assets/Characters/Пухляш/Run/Puffer_run_2.png"
+dest_files=[ "res://.import/Puffer_run_2.png-8455ad18f8bfb3e47a638c270db76ce4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

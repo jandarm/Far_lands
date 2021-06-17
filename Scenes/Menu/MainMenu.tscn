@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Objects/MenuControls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=2]
 [ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Actual Assets/Recources/GUI/Main_back_light.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actual Assets/Recources/GUI/Frame.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Recources/GUI/Source/Tottally_not_a_reference.png" type="Texture" id=7]
 [ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=8]
@@ -74,7 +73,7 @@ __meta__ = {
 [node name="Frame" type="Sprite" parent="Graphics"]
 material = SubResource( 2 )
 position = Vector2( 726.753, 124.274 )
-rotation = 0.006533
+rotation = 0.0138036
 scale = Vector2( 0.779911, 0.741844 )
 z_index = 1
 texture = ExtResource( 6 )
@@ -99,7 +98,9 @@ margin_right = 884.435
 margin_bottom = 557.974
 
 [node name="btnUsers" parent="Control" index="1"]
+focus_mode = 0
 mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
 
 [node name="btnMap" parent="Control" index="2"]
 margin_left = 65.5874
@@ -126,9 +127,6 @@ margin_bottom = 444.209
 [node name="lUserName" parent="Control" index="6"]
 custom_fonts/font = SubResource( 4 )
 
-[node name="Validator" parent="." instance=ExtResource( 5 )]
-jsonPath = "res://Scripts/Manager/Info.json"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.8
 anims/Frame_wiggle = SubResource( 5 )
@@ -138,8 +136,9 @@ tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 8 )
-[connection signal="pressed" from="Control/btnUsers" to="Control" method="_on_btnUsers_pressed"]
+[connection signal="pressed" from="Control/btnUsers" to="Control" method="_change_Scene" binds= [ "Users" ]]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
+[connection signal="pressed" from="Control/btnPath" to="Control" method="_change_Scene" binds= [ "Path" ]]
 [connection signal="pressed" from="Control/btnSettings" to="Control" method="_callibrate_Me"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
 

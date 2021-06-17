@@ -45,9 +45,8 @@ func _process(delta):
 	_paint_Bar_media()
 	#mole.play_animation(animationState)
 	
-	if (Manager.start_ex):
-		watch.start()
-		Manager.start_ex = false
+	if($Dialog.visible):
+		yield($Dialog, "dialog_finished")
 	
 	record_Mic_check()
 	record_Media_check()
@@ -139,7 +138,11 @@ func record_Media_check():
 
 
 func timing():
-	
+	for timing in stampsMic:
+		if(timing >= stampsMedia[timing] + 1 && timing <= stampsMedia[timing] - 1):
+			return true
+		else:
+			return false
 	pass 
 
 
@@ -175,3 +178,8 @@ func calculate_Power():
 	get_bus_peak_volume_right_db(AudioServer.\
 	get_bus_index("Rhythm"), 0), 0.01)
 	return power
+
+
+func dialog_Finished():
+	watch.start()
+	pass

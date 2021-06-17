@@ -4,7 +4,7 @@ signal my_
 
 func _ready():
 # warning-ignore:return_value_discarded
-	connect("my_", Manager, "say_How_you_feel")	
+	connect("my_", Manager, "say_How_you_feel")
 	emit_signal("my_")
 	pass
 
