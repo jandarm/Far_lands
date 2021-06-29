@@ -1,5 +1,8 @@
 extends Node
 
+var indexOfName
+
+
 func _ready():
 	
 	pass
@@ -20,4 +23,19 @@ func _on_NextLvl_button_pressed():
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Scenes/Menu/MainMenu.tscn")
 		Manager.lastPosition = 0
+	pass
+
+func make_Route(path : String):
+	match path:
+		
+		_: 
+			Manager.route.clear()
+			Manager.route = ["res://Scenes/Rhythm/Counting_scene.tscn"]
+	pass
+
+
+var pathName
+func _on_ItemList_item_selected(index):
+	indexOfName = index
+	#pathName = get_item_text(indexOfName)
 	pass

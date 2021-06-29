@@ -55,8 +55,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Success"
-length = 0.2
-loop = true
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -106,7 +105,7 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachine" id=15]
 states/Idle/node = SubResource( 6 )
@@ -117,7 +116,7 @@ states/Sad_transition/node = SubResource( 8 )
 states/Sad_transition/position = Vector2( 382, 38 )
 states/Success/node = SubResource( 9 )
 states/Success/position = Vector2( 3, 150 )
-transitions = [ "Idle", "Sad_transition", SubResource( 10 ), "Sad_transition", "Sad", SubResource( 11 ), "Sad", "Idle", SubResource( 12 ), "Idle", "Success", SubResource( 13 ), "Success", "Idle", SubResource( 14 ) ]
+transitions = [ "Idle", "Sad_transition", SubResource( 10 ), "Sad_transition", "Sad", SubResource( 11 ), "Sad", "Idle", SubResource( 12 ), "Idle", "Success", SubResource( 13 ), "Success", "Idle", SubResource( 17 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -95, -26 )
 
@@ -131,7 +130,6 @@ scale = Vector2( 5.24264, 5.24264 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 6
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )

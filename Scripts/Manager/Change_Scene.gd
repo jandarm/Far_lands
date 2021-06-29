@@ -15,10 +15,13 @@ func _change_Scene(name : String):
 		"Blow": get_tree().change_scene("res://Scenes/Blow/Blow_scene.tscn")
 # warning-ignore:return_value_discarded
 		"Map": get_tree().change_scene("res://Scenes/Map/Map_scene.tscn")
+		#ошибка в пути Users no valid symbol
 # warning-ignore:return_value_discarded
 		"Users": get_tree().change_scene("res://Scenes/Menu/Users.tscn")
 # warning-ignore:return_value_discarded
 		"Path": get_tree().change_scene("res://Scenes/Path/Path_choose_scene.tscn")
+# warning-ignore:return_value_discarded
+		"Count": get_tree().change_scene("res://Scenes/Rhythm/Counting_scene.tscn")
 		_: print("Not associated scene path, go to _change_Scene")
 	pass
 

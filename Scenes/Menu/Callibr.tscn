@@ -21,7 +21,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -34,9 +33,9 @@ __meta__ = {
 }
 
 [node name="Pog" type="TextureProgress" parent="."]
-margin_left = 20.0
+margin_left = 272.0
 margin_top = 395.0
-margin_right = 7515.0
+margin_right = 9298.0
 margin_bottom = 941.0
 rect_scale = Vector2( 0.0562799, 0.28 )
 max_value = 4.0
@@ -56,14 +55,14 @@ one_shot = true
 autostart = true
 
 [node name="Say" type="Label" parent="."]
-margin_left = 46.9782
-margin_top = 181.45
-margin_right = 414.978
-margin_bottom = 377.45
+margin_left = 344.0
+margin_top = 160.237
+margin_right = 712.0
+margin_bottom = 379.237
 custom_fonts/font = SubResource( 2 )
 text = "Сейчас мы проверим твой микрофон
 
-Это займёт совсем немного времени!"
+Это займёт совсем немного времени! Но сначала придётся помолчать"
 align = 1
 valign = 1
 autowrap = true
@@ -77,6 +76,7 @@ autoplay = true
 bus = "Calibr"
 
 [node name="Mass" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 597.0
 margin_top = 43.0
 margin_right = 1010.0

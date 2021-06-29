@@ -79,38 +79,38 @@ animation = "Happy"
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeStateMachine" id=16]
+[sub_resource type="AnimationNodeStateMachine" id=8]
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "WokeUp"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
-[sub_resource type="AnimationNodeStateMachine" id=13]
+[sub_resource type="AnimationNodeStateMachine" id=14]
 states/Blow/node = SubResource( 5 )
 states/Blow/position = Vector2( 435, 102 )
 states/Happy/node = SubResource( 6 )
 states/Happy/position = Vector2( 841, 102 )
 states/Idle/node = SubResource( 7 )
 states/Idle/position = Vector2( 217, 102 )
-states/StateMachine/node = SubResource( 16 )
+states/StateMachine/node = SubResource( 8 )
 states/StateMachine/position = Vector2( 293, 197 )
-states/WokeUp/node = SubResource( 8 )
+states/WokeUp/node = SubResource( 9 )
 states/WokeUp/position = Vector2( 639, 102 )
-transitions = [ "Idle", "Blow", SubResource( 9 ), "WokeUp", "Happy", SubResource( 10 ), "Blow", "Idle", SubResource( 12 ), "Blow", "WokeUp", SubResource( 15 ) ]
+transitions = [ "Idle", "Blow", SubResource( 10 ), "WokeUp", "Happy", SubResource( 11 ), "Blow", "Idle", SubResource( 12 ), "Blow", "WokeUp", SubResource( 13 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
 [node name="Dog" type="Node2D"]
 script = ExtResource( 2 )
@@ -121,7 +121,6 @@ scale = Vector2( 1.32378, 1.32378 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 6
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Blow = SubResource( 1 )
@@ -130,9 +129,9 @@ anims/Idle = SubResource( 3 )
 anims/WokeUp = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 13 )
+tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 14 )
-parameters/StateMachine/playback = SubResource( 17 )
+parameters/playback = SubResource( 15 )
+parameters/StateMachine/playback = SubResource( 16 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

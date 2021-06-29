@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Actual Assets/Recources/Shaders/outline.shader" type="Shader" id=1]
 [ext_resource path="res://Actual Assets/Map/Puffer_bitmap.png" type="BitMap" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Actual Assets/Map/Moll.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Map/Puffer.png" type="Texture" id=7]
 [ext_resource path="res://Actual Assets/Map/Land.png" type="Texture" id=8]
+[ext_resource path="res://Actual Assets/Map/Count.png" type="Texture" id=9]
+[ext_resource path="res://Actual Assets/Map/Count_bitmap.png" type="BitMap" id=10]
 [ext_resource path="res://Actual Assets/Map/Dandelions.png" type="Texture" id=13]
 [ext_resource path="res://Actual Assets/Map/Dandelions_bitmap.png" type="BitMap" id=14]
 
@@ -104,6 +106,12 @@ shader_param/width = 16.0
 shader_param/outline_color = Color( 1, 0.560784, 0, 1 )
 shader_param/is_visible = false
 
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 1 )
+shader_param/width = 8.0
+shader_param/outline_color = Color( 1, 0.560784, 0, 1 )
+shader_param/is_visible = false
+
 [node name="Map_scene" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -191,6 +199,22 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Count" type="TextureButton" parent="Event_controll"]
+material = SubResource( 7 )
+margin_left = 927.63
+margin_top = 81.3253
+margin_right = 1087.63
+margin_bottom = 288.325
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = ExtResource( 9 )
+texture_click_mask = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Event_controll/Back_button/Go_back" to="Event_controll" method="_on_Go_back_pressed"]
 [connection signal="mouse_entered" from="Event_controll/Moll" to="." method="_shader_entered" binds= [ "Moll" ]]
 [connection signal="mouse_exited" from="Event_controll/Moll" to="." method="_shader_exited" binds= [ "Moll" ]]
@@ -200,5 +224,8 @@ __meta__ = {
 [connection signal="pressed" from="Event_controll/Cave" to="Event_controll/Back_button" method="_change_Scene" binds= [ "Blow" ]]
 [connection signal="mouse_entered" from="Event_controll/Dandelions" to="." method="_shader_entered" binds= [ "Dandelions" ]]
 [connection signal="mouse_exited" from="Event_controll/Dandelions" to="." method="_shader_exited" binds= [ "Dandelions" ]]
+[connection signal="mouse_entered" from="Event_controll/Count" to="." method="_shader_entered" binds= [ "Count" ]]
+[connection signal="mouse_exited" from="Event_controll/Count" to="." method="_shader_exited" binds= [ "Count" ]]
+[connection signal="pressed" from="Event_controll/Count" to="Event_controll/Back_button" method="_change_Scene" binds= [ "Count" ]]
 
 [editable path="Event_controll/Back_button"]

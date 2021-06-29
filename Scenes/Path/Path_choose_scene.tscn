@@ -1,3 +1,110 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Path_chooser.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/NextLvl_button.tscn" type="PackedScene" id=3]
 
 [node name="Path" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 275.0
+margin_top = 7.0
+margin_right = 1006.0
+margin_bottom = 133.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+items = [ "Ритмика", null, false, "Дыхание", null, false, "Ритмика и дыхание", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Variants" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Variant_1" type="ItemList" parent="Variants"]
+margin_left = 99.4538
+margin_top = 312.682
+margin_right = 254.454
+margin_bottom = 439.682
+custom_fonts/font = ExtResource( 1 )
+items = [ "Дыхание", null, false, "Хлопки", null, false, "Подсчёт", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Variant_2" type="ItemList" parent="Variants"]
+margin_left = 457.676
+margin_top = 312.682
+margin_right = 612.676
+margin_bottom = 439.682
+custom_fonts/font = ExtResource( 1 )
+items = [ "Дыхание", null, false, "Хлопки", null, false, "Подсчёт", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Variant_3" type="ItemList" parent="Variants"]
+margin_left = 795.716
+margin_top = 312.682
+margin_right = 950.716
+margin_bottom = 439.682
+custom_fonts/font = ExtResource( 1 )
+items = [ "Дыхание", null, false, "Хлопки", null, false, "Подсчёт", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurtainBottom" type="ColorRect" parent="."]
+visible = false
+margin_left = -6.24493
+margin_top = 212.878
+margin_right = 1025.76
+margin_bottom = 679.878
+color = Color( 1, 1, 1, 0.537255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurtainTop" type="ColorRect" parent="."]
+visible = false
+margin_left = -7.0
+margin_right = 1023.0
+margin_bottom = 215.0
+color = Color( 1, 1, 1, 0.537255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 25.1001
+margin_top = 31.052
+margin_right = 180.1
+margin_bottom = 71.052
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Режим"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="." instance=ExtResource( 3 )]
+margin_left = 481.376
+margin_top = 477.6
+margin_right = 481.376
+margin_bottom = 477.6
+[connection signal="item_selected" from="Variants/Variant_1" to="Control" method="_on_ItemList_item_selected"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_CheckButton_toggled"]

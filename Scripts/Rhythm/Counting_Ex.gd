@@ -52,16 +52,14 @@ func _process(delta):
 	if (canPlay):
 		pick_And_play()
 		canPlay = false
-		
-	#delete
-	print(tm.time_left)
+		lbTimes.text = "Слушай и считай"
 	pass
 	
 	
 func pick_And_play():
 	rng.randomize()
 	rndAmount = rng.randi_range(1, 9)
-	lbRng.text = "iterations " + rndAmount as String	
+	lbRng.text = rndAmount as String
 # warning-ignore:unused_variable
 	for item in range(rndAmount):
 		rng.randomize()
@@ -71,6 +69,7 @@ func pick_And_play():
 		guy.play_animation(instrument as String)
 		yield($Player, "finished")
 	tm.start()
+	lbTimes.text = "Ну, сколько раз?"
 	pass
 	
 func answer(var amount : int):
@@ -80,7 +79,7 @@ func answer(var amount : int):
 		attemptCount += 1
 		failCount = 0
 	else:
-		lbTimes.text = "Не-а, было" + rndAmount as String
+		lbTimes.text = "Не-а, было " + rndAmount as String
 		canPlay = true
 		attemptCount = 0
 		failCount += 1
@@ -101,5 +100,6 @@ func _on_Timer_timeout():
 	canPlay = false
 	failCount += 1
 	rndAmount = 0
-	lbTimes.text = "Время вышло1"
+	lbTimes.text = "Тебя не дождёшься"
+	canPlay = true
 	pass

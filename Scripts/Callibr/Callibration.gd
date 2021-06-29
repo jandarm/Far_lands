@@ -98,7 +98,7 @@ func _on_Timer_timeout():
 			stamps.clear()
 			get_node("Mass").text = rmsBlow as String
 		4:
-			lb.text = "Результат"
+			lb.text = "Сейчас будем хлопать"
 			Manager.RmsBlow = ((rmsBlow + rmsSilent)/2)*(-1)
 			get_node("Mass").text = Manager.RmsBlow as String
 			tmCount += 1
@@ -115,6 +115,7 @@ func _on_Timer_timeout():
 			bar.step = 1
 			tm.stop()
 		6:
+			lb.text = "Всё!"
 			canClap = false
 			clapRecord = false
 			canRecord = false

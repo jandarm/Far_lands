@@ -33,6 +33,9 @@ func _ready():
 	
 	waitingDebug = get_node("WaitingDebug")
 	
+	$Dialog.visible = true
+	$Dialog.set_process(true)
+	
 	watchCount = 0
 	stampsMedia.clear()
 	stampsMic.clear()
@@ -40,9 +43,9 @@ func _ready():
 	
 # warning-ignore:unused_argument
 func _process(delta):
-	_paint_Time_left()
-	_paint_Bar_mic()
-	_paint_Bar_media()
+	#_paint_Time_left()
+	#_paint_Bar_mic()
+	#_paint_Bar_media()
 	#mole.play_animation(animationState)
 	
 	if($Dialog.visible):
@@ -51,7 +54,7 @@ func _process(delta):
 	record_Mic_check()
 	record_Media_check()
 	
-	clap_Time_debug()
+	#clap_Time_debug()
 	
 	pass
 
@@ -77,7 +80,10 @@ func _on_Stopwatch_timeout():
 		_: 
 			tm.stop()
 			narrator.text = "Всё! Может ещё разок?"
-			canRecordMedia = true
+			canRecordMedia = false
+			canRecordMic = false
+			tm.queue_free()
+			watch.queue_free()
 			mole.play_animation("Success")
 	pass
 
@@ -111,16 +117,19 @@ func _on_ClapTime_timeout():
 func record_Mic_check():
 	if (canRecordMic):       
 		calculate_Power()
-		if (power < Manager.RmsRhythm):
+		if (power <= Manager.RmsRhythm):
 			canClap = true
 		if (canClap):
-			if (power > Manager.RmsRhythm && stampsMic.size() >= stampsMedia.size()):
+			if (power > Manager.RmsRhythm && stampsMic.size() >= stampsMedia.size()-1):
 				watchCount +=1
 				_on_Stopwatch_timeout()
 			if (power > Manager.RmsRhythm && stampsMic.size() < stampsMedia.size()):
 				stampsMic.append(tm.time_left)
+				mole.play_animation("Success")
 				tm.start()
 				canClap = false
+	if(stampsMic.size() < stampsMedia.size()):
+		mole.play_animation("Idle")
 	pass
 
 

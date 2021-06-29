@@ -72,6 +72,7 @@ __meta__ = {
 }
 
 [node name="BarMic" type="TextureProgress" parent="Control"]
+visible = false
 margin_left = -4.79321
 margin_top = 280.615
 margin_right = 227.207
@@ -118,6 +119,7 @@ __meta__ = {
 }
 
 [node name="BarMedia" type="TextureProgress" parent="Control"]
+visible = false
 margin_left = 120.998
 margin_top = 280.615
 margin_right = 392.998
@@ -164,6 +166,7 @@ __meta__ = {
 }
 
 [node name="BarTime" type="TextureProgress" parent="Control"]
+visible = false
 margin_left = -800.112
 margin_top = -201.114
 margin_right = -695.112
@@ -199,6 +202,7 @@ bus = "Example"
 position = Vector2( 416.363, 444.233 )
 
 [node name="WaitingDebug" type="ProgressBar" parent="."]
+visible = false
 margin_left = 17.4441
 margin_top = 28.422
 margin_right = 237.444
@@ -211,6 +215,7 @@ __meta__ = {
 }
 
 [node name="DeleteMe" type="Label" parent="."]
+visible = false
 margin_left = 427.011
 margin_top = 58.7338
 margin_right = 786.011
@@ -237,6 +242,7 @@ margin_right = 911.439
 margin_bottom = 488.899
 
 [node name="Dialog" parent="." instance=ExtResource( 9 )]
+visible = false
 dialogPath = "res://Scripts/Dialogs/Mole_dialog.json"
 [connection signal="timeout" from="Stopwatch" to="." method="_on_Stopwatch_timeout"]
 [connection signal="timeout" from="ClapTime" to="." method="_on_ClapTime_timeout"]
