@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scenes/Dialog/Dialog_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Rhythm/Counting_Ex.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Characters/Tester guy/Tester_guy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Objects/Back_button.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Actual Assets/Menu/2.png" type="Texture" id=12]
+[ext_resource path="res://Actual Assets/Characters/Tester_guy/Tester_guy_sits.png" type="Texture" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -427,8 +428,13 @@ margin_bottom = 491.445
 [node name="Back_button" parent="." instance=ExtResource( 11 )]
 
 [node name="Guy" parent="." instance=ExtResource( 10 )]
-position = Vector2( 530.385, 392.026 )
+position = Vector2( 529, 394 )
 scale = Vector2( 6.94331, 6.94331 )
+
+[node name="TesterGuySits" type="Sprite" parent="Guy"]
+position = Vector2( 43.6391, -28.0846 )
+scale = Vector2( 0.331013, 0.331013 )
+texture = ExtResource( 13 )
 
 [node name="NumberButtons" type="GridContainer" parent="."]
 margin_left = 20.0
@@ -581,8 +587,8 @@ visible = false
 position = Vector2( -173.243, 342.475 )
 scale = Vector2( 5.09533, 5.51941 )
 texture = ExtResource( 6 )
-vframes = 3
 hframes = 7
+vframes = 3
 frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -618,8 +624,8 @@ margin_left = 667.044
 margin_top = 330.295
 margin_right = 1041.04
 margin_bottom = 437.295
-custom_fonts/font = SubResource( 58 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 58 )
 text = "Пошумим!"
 align = 1
 valign = 1
@@ -635,6 +641,7 @@ textSpeed = 0.03
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
 [connection signal="pressed" from="NumberButtons/btn_1" to="." method="answer" binds= [ 1 ]]
 [connection signal="pressed" from="NumberButtons/btn_2" to="." method="answer" binds= [ 2 ]]
 [connection signal="pressed" from="NumberButtons/btn_3" to="." method="answer" binds= [ 3 ]]

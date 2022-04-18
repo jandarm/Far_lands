@@ -13,9 +13,33 @@ _global_script_classes=[ {
 "class": "BeatPlayer",
 "language": "GDScript",
 "path": "res://addons/beatplayer/beatplayer.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+}, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 } ]
 _global_script_class_icons={
-"BeatPlayer": ""
+"BeatPlayer": "",
+"ContributorClass": "",
+"GistItem": "",
+"InvitationItem": "",
+"RepositoryItem": ""
 }
 
 [application]
@@ -32,6 +56,10 @@ enable_audio_input=true
 
 Manager="*res://Scripts/Manager/Manager.gd"
 JsonReader="*res://Scripts/Manager/jsonReader.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [display]
 
@@ -39,7 +67,7 @@ window/stretch/mode="2d"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "ImportCleaner", "godot-sqlite" )
+enabled=PoolStringArray( "res://addons/ImportCleaner/plugin.cfg", "res://addons/github-integration/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg" )
 
 [gdnative]
 
