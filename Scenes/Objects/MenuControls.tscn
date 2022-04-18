@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Objects/CloseGame.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Actual Assets/Recources/btnMenuPressedr.tres" type="StyleBox" id=4]
 [ext_resource path="res://Actual Assets/Recources/btnMenuNormal.tres" type="StyleBox" id=5]
 [ext_resource path="res://Actual Assets/Recources/GUI/Button_bubilda.png" type="Texture" id=6]
+[ext_resource path="res://Actual Assets/Recources/GUI/Pansil.png" type="Texture" id=7]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -25,11 +26,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 331.0
-margin_top = 112.0
-margin_right = 384.0
-margin_bottom = 152.0
+[node name="btnUsers" type="Button" parent="."]
+margin_left = 330.37
+margin_top = 106.96
+margin_right = 390.37
+margin_bottom = 153.96
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
 
 [node name="btnMap" type="Button" parent="."]
 margin_left = 64.0
@@ -85,12 +89,13 @@ margin_top = 552.958
 margin_right = -19.1632
 margin_bottom = -9.04236
 
-[node name="Label" type="Label" parent="."]
+[node name="lUserName" type="Label" parent="."]
 margin_left = 64.0
 margin_top = 112.0
 margin_right = 313.0
 margin_bottom = 152.0
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Имя пользователя"
 align = 1
 valign = 1

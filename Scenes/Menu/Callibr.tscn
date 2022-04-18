@@ -1,27 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Callibr/Callibration.gd" type="Script" id=1]
 [ext_resource path="res://Actual Assets/Recources/GUI/ProgressBar.png" type="Texture" id=2]
-[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Actual Assets/Recources/GUI/Main_back.png" type="Texture" id=3]
 
-[sub_resource type="AudioStreamMicrophone" id=1]
+[sub_resource type="DynamicFontData" id=1]
+resource_local_to_scene = true
+font_path = "res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="AudioStreamMicrophone" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 1.6, 1.25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Pog" type="TextureProgress" parent="."]
-margin_left = 20.0
+margin_left = 272.0
 margin_top = 395.0
-margin_right = 7515.0
+margin_right = 9298.0
 margin_bottom = 941.0
 rect_scale = Vector2( 0.0562799, 0.28 )
-max_value = 10.0
+max_value = 4.0
 step = 0.05
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 2 )
@@ -38,14 +55,14 @@ one_shot = true
 autostart = true
 
 [node name="Say" type="Label" parent="."]
-margin_left = 46.9782
-margin_top = 181.45
-margin_right = 414.978
-margin_bottom = 377.45
-custom_fonts/font = ExtResource( 3 )
+margin_left = 344.0
+margin_top = 160.237
+margin_right = 712.0
+margin_bottom = 379.237
+custom_fonts/font = SubResource( 2 )
 text = "Сейчас мы проверим твой микрофон
 
-Это займёт совсем немного времени!"
+Это займёт совсем немного времени! Но сначала придётся помолчать"
 align = 1
 valign = 1
 autowrap = true
@@ -54,11 +71,12 @@ __meta__ = {
 }
 
 [node name="Listener" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 1 )
+stream = SubResource( 3 )
 autoplay = true
 bus = "Calibr"
 
 [node name="Mass" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 597.0
 margin_top = 43.0
 margin_right = 1010.0

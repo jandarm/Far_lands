@@ -1,22 +1,62 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Objects/MenuControls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=2]
 [ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Actual Assets/Recources/GUI/Main_back.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Menu/jsonValid.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actual Assets/Recources/GUI/Main_back_light.png" type="Texture" id=4]
 [ext_resource path="res://Actual Assets/Recources/GUI/Frame.png" type="Texture" id=6]
 [ext_resource path="res://Actual Assets/Recources/GUI/Source/Tottally_not_a_reference.png" type="Texture" id=7]
+[ext_resource path="res://Actual Assets/Recources/labels.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void vertex()
+{
+	//VERTEX += vec2(sin(TIME + VERTEX.y)*5.0, sin(TIME + VERTEX.x));
+	//VERTEX.x += cos(TIME)*10.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 resource_local_to_scene = true
 size = 30
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 resource_local_to_scene = true
-size = 30
-font_data = ExtResource( 3 )
+size = 20
+outline_size = 5
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Frame_wiggle"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics/Frame:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.6 ),
+"transitions": PoolRealArray( 1, -2 ),
+"update": 0,
+"values": [ -1.3, 1.3 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Frame_wiggle"
+
+[sub_resource type="AnimationNodeStateMachine" id=7]
+states/Frame_wiggle/node = SubResource( 6 )
+states/Frame_wiggle/position = Vector2( 303, 101 )
+start_node = "Frame_wiggle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,40 +71,77 @@ __meta__ = {
 }
 
 [node name="Frame" type="Sprite" parent="Graphics"]
-position = Vector2( 725.688, 302.869 )
+material = SubResource( 2 )
+position = Vector2( 726.753, 124.274 )
+rotation = -0.0041671
 scale = Vector2( 0.779911, 0.741844 )
 z_index = 1
 texture = ExtResource( 6 )
+offset = Vector2( -1.36621, 240.745 )
 
 [node name="Tottally_not_a_reference" type="Sprite" parent="Graphics/Frame"]
-position = Vector2( -0.263397, -0.941181 )
-scale = Vector2( 0.814165, 0.951018 )
+use_parent_material = true
+position = Vector2( -168.387, 205.089 )
+scale = Vector2( 0.80363, 0.978864 )
 z_as_relative = false
 texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -113.687, -150.281 )
 
 [node name="Control" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Button" parent="Control" index="1"]
-margin_right = 385.0
+[node name="Panel" parent="Control" index="0"]
+margin_left = 564.435
+margin_top = 502.974
+margin_right = 884.435
+margin_bottom = 557.974
+
+[node name="btnUsers" parent="Control" index="1"]
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
 
 [node name="btnMap" parent="Control" index="2"]
-custom_fonts/font = SubResource( 1 )
+margin_left = 65.5874
+margin_top = 257.209
+margin_right = 385.587
+margin_bottom = 305.209
+custom_fonts/font = SubResource( 3 )
 text = "КАРТА"
 
 [node name="btnPath" parent="Control" index="3"]
-custom_fonts/font = SubResource( 1 )
+margin_left = 65.5874
+margin_top = 320.209
+margin_right = 385.587
+margin_bottom = 368.209
+custom_fonts/font = SubResource( 3 )
 text = "МАРШРУТ"
 
-[node name="Label" parent="Control" index="6"]
-custom_fonts/font = SubResource( 2 )
+[node name="btnSettings" parent="Control" index="4"]
+margin_left = 58.5874
+margin_top = 382.209
+margin_right = 392.587
+margin_bottom = 444.209
 
-[node name="Validator" parent="." instance=ExtResource( 5 )]
-jsonPath = "res://Scripts/Manager/Info.json"
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
+[node name="lUserName" parent="Control" index="6"]
+custom_fonts/font = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/Frame_wiggle = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 8 )
+
+[connection signal="pressed" from="Control/btnUsers" to="Control" method="_change_Scene" binds= [ "Users" ]]
 [connection signal="pressed" from="Control/btnMap" to="Control" method="_on_btnMap_pressed"]
+[connection signal="pressed" from="Control/btnPath" to="Control" method="_change_Scene" binds= [ "Path" ]]
+[connection signal="pressed" from="Control/btnSettings" to="Control" method="_callibrate_Me"]
 [connection signal="pressed" from="Control/Control/btnExit" to="Control" method="_on_btnExit_pressed"]
 
 [editable path="Control"]
-
 [editable path="Control/Control"]

@@ -1,1 +1,1 @@
-{"isCallibrated":true,"routes":[{"01":"../Scenes/Example/1.json","02":"../Scenes/Example/2.json","03":"../Scenes/Example/3.json","name":"this one"},{"name":"the best one","que":["../Scenes/Example/11.json","../Scenes/Example/12.json","../Scenes/Example/22.json"]},]}
+{"isCallibrated":true,"routes":{"the best one":["res://Scenes/Rhythm/Counting_scene.tscn","res://Scenes/Rhythm/Counting_scene.tscn","res://Scenes/Rhythm/Counting_scene.tscn"]}}

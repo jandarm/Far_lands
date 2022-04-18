@@ -1,0 +1,201 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Scenes/Characters/Tester guy/Tester_guy.gd" type="Script" id=1]
+[ext_resource path="res://Actual Assets/Characters/Tester_guy/Tester_guy_sad.png" type="Texture" id=2]
+[ext_resource path="res://Actual Assets/Characters/Tester_guy/Tester_guy_happy.png" type="Texture" id=3]
+[ext_resource path="res://Actual Assets/Characters/Tester_guy/Tester_guy_neutral.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "0"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "3"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "4"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0, -10.0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "0"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "1"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "2"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "3"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "4"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/0/node = SubResource( 6 )
+states/0/position = Vector2( 280, 160 )
+states/1/node = SubResource( 7 )
+states/1/position = Vector2( 514, 38 )
+states/2/node = SubResource( 8 )
+states/2/position = Vector2( 745, 160 )
+states/3/node = SubResource( 9 )
+states/3/position = Vector2( 659, 382 )
+states/4/node = SubResource( 10 )
+states/4/position = Vector2( 373, 388 )
+transitions = [ "0", "1", SubResource( 11 ), "1", "0", SubResource( 12 ), "1", "2", SubResource( 13 ), "2", "1", SubResource( 14 ), "2", "0", SubResource( 15 ), "0", "2", SubResource( 16 ), "4", "0", SubResource( 17 ), "0", "4", SubResource( 18 ), "4", "3", SubResource( 19 ), "3", "4", SubResource( 20 ), "3", "2", SubResource( 21 ), "2", "3", SubResource( 22 ), "3", "1", SubResource( 23 ), "1", "3", SubResource( 24 ), "4", "1", SubResource( 25 ), "1", "4", SubResource( 26 ), "3", "0", SubResource( 27 ), "0", "3", SubResource( 28 ), "4", "2", SubResource( 29 ), "2", "4", SubResource( 30 ) ]
+start_node = "0"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+
+[node name="Guy" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/0 = SubResource( 1 )
+anims/1 = SubResource( 2 )
+anims/2 = SubResource( 3 )
+anims/3 = SubResource( 4 )
+anims/4 = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 32 )

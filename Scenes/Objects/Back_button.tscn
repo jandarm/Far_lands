@@ -1,21 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Actual Assets/Recources/GUI/домой.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Buttons/Go_map.gd" type="Script" id=2]
-
-
+[ext_resource path="res://Actual Assets/Recources/GUI/Home.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Manager/Change_Scene.gd" type="Script" id=3]
 
 [node name="Back_button" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -1, 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Go_back" type="Button" parent="."]
 margin_top = 489.0
-margin_right = 113.0
+margin_right = 112.0
 margin_bottom = 601.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -23,8 +22,7 @@ enabled_focus_mode = 0
 icon = ExtResource( 1 )
 flat = true
 expand_icon = true
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Go_back" to="Go_back" method="_on_Go_back_pressed"]
+[connection signal="pressed" from="Go_back" to="." method="_on_Go_back_pressed"]

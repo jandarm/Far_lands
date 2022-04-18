@@ -1,42 +1,99 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Actual Assets/Recources/ofont.ru_Times New Roman.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Menu/UserNickname.gd" type="Script" id=3]
+[ext_resource path="res://Actual Assets/Recources/Rus.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/Planks.png" type="Texture" id=5]
+[ext_resource path="res://Actual Assets/Recources/GUI/Pack_GUI/UI_Wood_Fonts/UI_Shadow_Font_B.png" type="Texture" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="AtlasTexture" id=1]
+resource_local_to_scene = true
+atlas = ExtResource( 5 )
+region = Rect2( -0.148781, 95.8392, 48.3206, 32.2888 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 391.161, 168.785, 18.4482, 18.1367 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+var line_edit
+
+func _ready():
+	line_edit = get_parent().get_node(\"LineEdit\")
+
+# warning-ignore:return_value_discarded
+func _on_btnAccept_pressed():
+	if(line_edit.text!=\"\"):
+		get_parent().insertIntoDB()
+		get_tree().change_scene(\"res://Scenes/Menu/Users.tscn\")
+	else:
+		print(\"ошибка\")
+"
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 358.811, 167.199, 18.2623, 19.7503 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 51.818, 66.0698, 8.04193, 8.39158 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -691.0
 margin_bottom = -437.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -166.5
-margin_top = -81.5
-margin_right = 166.5
-margin_bottom = 81.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = 1.0
+margin_right = 333.0
+margin_bottom = 164.0
+texture = SubResource( 1 )
+expand = true
 
 [node name="btnAccept" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -29.6224
-margin_top = 28.1022
-margin_right = 27.3776
-margin_bottom = 62.1022
+margin_left = 7.14693
+margin_top = 19.8811
+margin_right = 47.1469
+margin_bottom = 59.8811
+mouse_default_cursor_shape = 2
+icon = SubResource( 2 )
+flat = true
+expand_icon = true
+script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnCancel" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.9809
+margin_top = 19.9905
+margin_right = -9.98094
+margin_bottom = 59.9905
+mouse_default_cursor_shape = 2
+icon = SubResource( 4 )
+flat = true
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +107,7 @@ margin_left = -87.0
 margin_top = -51.98
 margin_right = 85.0
 margin_bottom = -20.98
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Напиши своё имя:"
 align = 1
 valign = 1
@@ -63,11 +120,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -86.0
+margin_left = -85.3326
 margin_top = -18.0
-margin_right = 86.0
+margin_right = 86.6674
 margin_bottom = 18.0
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="bntClose" type="Button" parent="."]
+margin_left = 286.82
+margin_top = -0.854558
+margin_right = 326.82
+margin_bottom = 32.1454
+mouse_default_cursor_shape = 2
+icon = SubResource( 7 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="btnAccept" to="." method="_on_btnAccept_pressed"]
+[connection signal="pressed" from="btnCancel" to="." method="_on_btnCancel_pressed"]
+[connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="bntClose" to="." method="_on_bntClose_pressed"]

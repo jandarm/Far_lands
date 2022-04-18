@@ -3,22 +3,24 @@ extends Node2D
 var RmsBlow
 var RmsRhythm
 
-func _ready():
-	RmsBlow = 0
-	RmsRhythm = 0
-	pass
+var start_ex = false
 
+var whereINow
+var whereIFrom
+var route = []
+var lastPosition = 0
+
+func _ready():
+	RmsBlow = -40
+	RmsRhythm = -40
+	route.clear()
+	pass
 
 func say_How_you_feel():
-	print("it works")
+	print("I feel good")
 	print(RmsBlow)
-	print(RmsRhythm)	
+	print(RmsRhythm)
 	pass
 
-
-func is_Callibrated():	
+func is_Callibrated():
 	return JsonReader.levelData["isCallibrated"]
-
-# просто комментарий
-
-#не очень просто тест

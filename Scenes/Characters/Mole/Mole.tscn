@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Actual Assets/Characters/Mole/Mole_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Actual Assets/Characters/Mole/Mole_Character.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Sad"
+length = 1.65
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 9, 11, 9, 10, 9, 11, 9, 10, 9, 11, 9, 10, 9, 11 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Sad_transition"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Success"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -180.0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Sad"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Sad_transition"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Success"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachine" id=15]
+states/Idle/node = SubResource( 6 )
+states/Idle/position = Vector2( 121, 38 )
+states/Sad/node = SubResource( 7 )
+states/Sad/position = Vector2( 246, 150 )
+states/Sad_transition/node = SubResource( 8 )
+states/Sad_transition/position = Vector2( 382, 38 )
+states/Success/node = SubResource( 9 )
+states/Success/position = Vector2( 3, 150 )
+transitions = [ "Idle", "Sad_transition", SubResource( 10 ), "Sad_transition", "Sad", SubResource( 11 ), "Sad", "Idle", SubResource( 12 ), "Idle", "Success", SubResource( 13 ), "Success", "Idle", SubResource( 17 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -95, -26 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[node name="Mole" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 5.24264, 5.24264 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+anims/Sad = SubResource( 2 )
+anims/Sad_transition = SubResource( 3 )
+anims/Success = SubResource( 4 )
+"anims/Новая анимация" = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 16 )
